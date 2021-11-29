@@ -2,9 +2,11 @@
 
 <head>
   <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/main.css">
   <title>Sign in</title>
 </head>
 <body>
+    <?php include('header.php'); ?>
     <div class="wrap">
         <form class="login" action="">
             <div class="header">
