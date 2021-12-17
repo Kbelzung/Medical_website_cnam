@@ -14,7 +14,7 @@
     </header>
 
     <!-- calendar_bloc -->
-    <div class="calendar_row" id="calendar_days_row">
+    <div class="calendar_row" id="calendar_row_days">
       <div class="calendar_bloc">Lundi</div>
       <div class="calendar_bloc">Mardi</div>
       <div class="calendar_bloc">Mercredi</div>
@@ -89,4 +89,5 @@
       <div class="calendar_bloc">8</div>
       <div class="calendar_bloc">9</div>
     </div>
+
   </div>
