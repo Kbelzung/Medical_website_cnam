@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="css/calendar.css">
-<div class="calendar">
+<div id="container">
+  <div class="calendar">
     <header id="calendar_header">
       <div id="calendar_months">
         <img id="calendar_months_arrow_left" class="calendar_arrow" src="resources/chevron-left.svg"></img>
@@ -89,5 +90,49 @@
       <div class="calendar_bloc">8</div>
       <div class="calendar_bloc">9</div>
     </div>
-
   </div>
+  
+  <div class="dates_container">
+    <div class="dates_row">
+      <div class="dates_bloc active" >3</div>
+      <div class="dates_bloc active">4</div>
+      <div class="dates_bloc active">5</div>
+      <div class="dates_bloc active">6</div>
+    </div>
+
+    <div class="dates_row">
+      <div class="dates_bloc active">3</div>
+      <div class="dates_bloc active">4</div>
+      <div class="dates_bloc active">5</div>
+      <div class="dates_bloc active">6</div>
+    </div>
+
+    <div class="dates_row">
+      <div class="dates_bloc active">3</div>
+      <div class="dates_bloc active">4</div>
+      <div class="dates_bloc active">5</div>
+      <div class="dates_bloc active">6</div>
+    </div>
+
+    <div class="dates_row">
+      <div class="dates_bloc active">3</div>
+      <div class="dates_bloc active">4</div>
+      <div class="dates_bloc active">5</div>
+      <div class="dates_bloc active">6</div>
+    </div>
+
+    <div class="dates_row">
+      <div class="dates_bloc active">3</div>
+      <div class="dates_bloc active">4</div>
+      <div class="dates_bloc active">5</div>
+      <div class="dates_bloc active">6</div>
+    </div>
+
+    <div class="dates_row">
+      <div class="dates_bloc active"><-</div>
+      <div class="dates_bloc desactivated"></div>
+      <div class="desactivated dates_bloc"></div>
+      <div class="dates_bloc active">-></div>
+    </div>
+  </div>
+</div>

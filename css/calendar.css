@@ -1,7 +1,21 @@
+#container {
+  display: inline-flex;
+  height: 100%;
+  width: 100%;
+}
+
 .calendar {
   display: flex;
   flex-direction: column;
   text-align: center;
+  flex-grow: 1;
+}
+
+.dates_container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  flex-grow: 1;
   height: 100%;
 }
 
@@ -65,6 +79,11 @@
   color: white;
 }
 
+.desactivated {
+  color: white;
+  background-color: white;
+}
+
 .calendar_arrow {
   flex-basis: 10%;
   padding-left: 10%;
@@ -82,3 +101,23 @@
   align-items: center;
 }
 
+.dates_row {
+  display: flex;
+  flex-grow: 1;
+  margin-bottom: 10px;
+}
+
+.dates_bloc {
+  display: flex;
+  height: 100%;
+  flex-grow: 1;
+  border-radius: 8px;
+  background-color: F3F9FF;
+  margin: 10px;
+  text-align: center;
+
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  flex-basis: 100%;
+}
