@@ -52,7 +52,6 @@
 
 #calendar_months, #calendar_years {
   display: flex;
-  flex-direction: inline;
   justify-content: space-between;
   flex-grow: 1;
   min-height: 100%;
@@ -85,10 +84,8 @@
 }
 
 .calendar_arrow {
-  flex-basis: 10%;
-  padding-left: 10%;
-  padding-right: 10%;
   align-content: center;
+  flex-grow: 1;
 }
 
 .calendar_arrow:active {
@@ -96,9 +93,12 @@
 }
 
 .calendar_header_text {
-  font-size: 3em;
+  font-size: 4em;
   display: flex;
   align-items: center;
+  flex-grow: 2;
+  justify-content: center;
+  text-size-adjust: 100em;
 }
 
 .dates_row {
@@ -107,17 +107,23 @@
   margin-bottom: 10px;
 }
 
+.dates_bloc_active {
+  border-radius: 8px;
+  background-color: F3F9FF;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.dates_bloc_active:hover {
+  background-color: #2760A8;
+  color: white;
+}
+
 .dates_bloc {
   display: flex;
   height: 100%;
   flex-grow: 1;
-  border-radius: 8px;
-  background-color: F3F9FF;
   margin: 10px;
-  text-align: center;
-
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
   flex-basis: 100%;
 }
