@@ -16,79 +16,79 @@
 
     <!-- calendar_bloc -->
     <div class="calendar_row" id="calendar_row_days">
-      <div class="calendar_bloc">Lundi</div>
-      <div class="calendar_bloc">Mardi</div>
-      <div class="calendar_bloc">Mercredi</div>
-      <div class="calendar_bloc">Jeudi</div>
-      <div class="calendar_bloc">Vendredi</div>
-      <div class="calendar_bloc">Samedi</div>
-      <div class="calendar_bloc">Dimanche</div>
+      <div class="calendar_bloc_weekdays">Lundi</div>
+      <div class="calendar_bloc_weekdays">Mardi</div>
+      <div class="calendar_bloc_weekdays">Mercredi</div>
+      <div class="calendar_bloc_weekdays">Jeudi</div>
+      <div class="calendar_bloc_weekdays">Vendredi</div>
+      <div class="calendar_bloc_weekdays">Samedi</div>
+      <div class="calendar_bloc_weekdays">Dimanche</div>
     </div>
     
     <!-- row 27-2 -->
     <div class="calendar_row">
-      <div class="calendar_bloc" ></div>
-      <div class="calendar_bloc"></div>
-      <div class="calendar_bloc"></div>
-      <div class="calendar_bloc"></div>
-      <div class="calendar_bloc"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
+      <div class="calendar_bloc_number" >1</div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number" ></div>
+      <div class="calendar_bloc_number"></div>
     </div>
 
     <!-- row 3-9 -->
     <div class="calendar_row">
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
     </div>
 
     <!-- row 10-16 -->
     <div class="calendar_row">
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
     </div>
 
     <!-- row 17-23 -->
     <div class="calendar_row">
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
     </div>
 
     <!-- row 24-2 -->
     <div class="calendar_row">
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc active"></div>
-      <div class="calendar_bloc"></div>
-      <div class="calendar_bloc"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
     </div>
 
     <!-- row 3-9 -->
     <div class="calendar_row">
-      <div class="calendar_bloc"></div>
-      <div class="calendar_bloc"></div>
-      <div class="calendar_bloc"></div>
-      <div class="calendar_bloc"></div>
-      <div class="calendar_bloc"></div>
-      <div class="calendar_bloc"></div>
-      <div class="calendar_bloc"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
+      <div class="calendar_bloc_number"></div>
     </div>
   </div>
   
@@ -136,3 +136,4 @@
     </div>
   </div>
 </div>
+<script src="js/calendar.js"></script>
