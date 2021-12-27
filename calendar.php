@@ -8,9 +8,9 @@
         <img id="calendar_months_arrow_right" class="calendar_arrow" src="resources/chevron-right.svg" onclick="nextMonth();"></img>
       </div>
       <div id="calendar_years">
-        <img id="calendar_years_arrow_left" class="calendar_arrow" src="resources/chevron-left.svg"></img>
+        <img id="calendar_years_arrow_left" class="calendar_arrow" src="resources/chevron-left.svg" onclick="previousYear();"></img>
         <h1 id="calendar_years_text" class="calendar_header_text"></h1>
-        <img id="calendar_years_arrow_right" class="calendar_arrow" src="resources/chevron-right.svg"></img>
+        <img id="calendar_years_arrow_right" class="calendar_arrow" src="resources/chevron-right.svg" onclick="nextYear();"></img>
       </div>
     </header>
 

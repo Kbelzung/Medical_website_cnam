@@ -5,8 +5,7 @@ let currentYear = today.getFullYear();
 let dayOfTheWeekList = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
 let monthsList = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Décembre']
 
-
-fillCalendar(currentMonth - 4, currentYear);
+fillCalendar(currentMonth, currentYear);
 
 function fillCalendar(month, year) {
 
@@ -38,13 +37,12 @@ function fillCalendar(month, year) {
         casesCalendar[i].classList.add('active');
         dayOfMonthNumber++;
     }
-
 }
 
 function nextMonth() {
     currentMonth++;
     if(currentMonth>11){
-        currentMonth=0;
+        currentMonth = 0;
     }
     fillCalendar(currentMonth,currentYear);
 }
@@ -52,7 +50,23 @@ function nextMonth() {
 function previousMonth() {
     currentMonth--;
     if(currentMonth < 0){
-        currentMonth=11;
+        currentMonth = 11;
+    }
+    fillCalendar(currentMonth,currentYear);
+}
+
+function nextYear() {
+    currentYear++;
+    if(currentYear > 2050) {
+        currentMonth = 2050;
+    }
+    fillCalendar(currentMonth,currentYear);
+}
+
+function previousYear() {
+    currentYear--;
+    if(currentYear < 2020) {
+        currentYear = 2020;
     }
     fillCalendar(currentMonth,currentYear);
 }
