@@ -3,9 +3,9 @@
   <div class="calendar">
     <header id="calendar_header">
       <div id="calendar_months">
-        <img id="calendar_months_arrow_left" class="calendar_arrow" src="resources/chevron-left.svg"></img>
+        <img id="calendar_months_arrow_left" class="calendar_arrow" src="resources/chevron-left.svg" onclick="previousMonth();"></img>
         <h1 id="calendar_months_text" class="calendar_header_text"></h1>
-        <img id="calendar_months_arrow_right" class="calendar_arrow" src="resources/chevron-right.svg"></img>
+        <img id="calendar_months_arrow_right" class="calendar_arrow" src="resources/chevron-right.svg" onclick="nextMonth();"></img>
       </div>
       <div id="calendar_years">
         <img id="calendar_years_arrow_left" class="calendar_arrow" src="resources/chevron-left.svg"></img>
@@ -27,7 +27,7 @@
     
     <!-- row 27-2 -->
     <div class="calendar_row">
-      <div class="calendar_bloc_number" >1</div>
+      <div class="calendar_bloc_number"></div>
       <div class="calendar_bloc_number"></div>
       <div class="calendar_bloc_number"></div>
       <div class="calendar_bloc_number"></div>

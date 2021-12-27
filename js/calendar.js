@@ -6,33 +6,58 @@ let dayOfTheWeekList = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','
 let monthsList = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Décembre']
 
 
-fillCalendar(currentMonth, currentYear);
+fillCalendar(currentMonth - 4, currentYear);
 
 function fillCalendar(month, year) {
-    
+
     //clear calendar
     let casesCalendar =  document.getElementsByClassName('calendar_bloc_number');
     for (let caseCalendar of casesCalendar) {
         caseCalendar.innerHTML = "";
+        caseCalendar.classList.remove('active');
     }
     
     //fill month
     let monthElement = document.getElementById('calendar_months_text');
-    monthElement.innerHTML = monthsList[currentMonth];
+    monthElement.innerHTML = monthsList[month];
     
     //fill year
     let yearElement = document.getElementById('calendar_years_text');
-    yearElement.innerHTML = currentYear;
+    yearElement.innerHTML = year;
 
     let firstDay = (new Date(year, month)).getDay();
+    //if firstDay = 0 (Sunday) then it's need to be 7 for our grid
+    if(firstDay == 0){
+        firstDay = 7;
+    }
     let daysInMonth = 32 - new Date(year, month, 32).getDate();
 
-    
+    console.log("month : " + month)
+    console.log("year : " + year)
+    console.log("firstDay : " + firstDay)
+
     var dayOfMonthNumber = 1;
-    for(let i = firstDay; i < daysInMonth; i++){
+    for(let i = firstDay - 1; i < daysInMonth; i++){
+        console.log("dayOfMonthNumber: " + dayOfMonthNumber)
         casesCalendar[i].innerHTML=dayOfMonthNumber;
         casesCalendar[i].classList.add('active');
         dayOfMonthNumber++;
     }
+
 }
 
+function nextMonth() {
+    currentMonth++;
+    if(currentMonth>11){
+        currentMonth=0;
+    }
+    fillCalendar(currentMonth,currentYear);
+}
+
+function previousMonth() {
+    currentMonth--;
+    if(currentMonth < 0){
+        currentMonth=11;
+    }
+    fillCalendar(currentMonth,currentYear);
+}
