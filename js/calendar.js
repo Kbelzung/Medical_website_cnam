@@ -32,13 +32,8 @@ function fillCalendar(month, year) {
     }
     let daysInMonth = 32 - new Date(year, month, 32).getDate();
 
-    console.log("month : " + month)
-    console.log("year : " + year)
-    console.log("firstDay : " + firstDay)
-
     var dayOfMonthNumber = 1;
     for(let i = firstDay - 1; i < daysInMonth; i++){
-        console.log("dayOfMonthNumber: " + dayOfMonthNumber)
         casesCalendar[i].innerHTML=dayOfMonthNumber;
         casesCalendar[i].classList.add('active');
         dayOfMonthNumber++;
