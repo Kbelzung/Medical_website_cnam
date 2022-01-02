@@ -32,14 +32,11 @@
 }
 
 .calendar_row {
-  background-color: #F3F9FF;  
-}
-
-.calendar_row {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
   align-items: center;
+
 }
 
 #calendar_row_days div {
@@ -79,6 +76,7 @@
   align-items: center;
   border-radius: 8px;
   color: gray;
+  background-color: red;
 }
 
 .active {
@@ -88,6 +86,10 @@
 .active:hover {
   background-color: #2760A8;
   color: white;
+}
+
+.selected {
+  background-color: #2760A8;
 }
 
 .desactivated {

@@ -70,3 +70,4 @@ function previousYear() {
     }
     fillCalendar(currentMonth,currentYear);
 }
+
