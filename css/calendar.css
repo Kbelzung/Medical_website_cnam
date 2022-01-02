@@ -36,7 +36,7 @@
   flex-direction: row;
   flex-grow: 1;
   align-items: center;
-
+  background-color: #F3F9FF;
 }
 
 #calendar_row_days div {
@@ -76,7 +76,7 @@
   align-items: center;
   border-radius: 8px;
   color: gray;
-  background-color: red;
+  background-color: #F3F9FF;
 }
 
 .active {
@@ -90,6 +90,7 @@
 
 .selected {
   background-color: #2760A8;
+  color: white;
 }
 
 .desactivated {
@@ -131,7 +132,7 @@
 
 .dates_bloc_active {
   border-radius: 8px;
-  background-color: F3F9FF;
+  background-color: #F3F9FF;
   justify-content: center;
   align-items: center;
   color: black;
