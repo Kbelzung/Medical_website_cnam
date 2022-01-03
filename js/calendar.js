@@ -5,12 +5,14 @@ let currentYear = today.getFullYear();
 let dayOfTheWeekList = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
 let monthsList = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Décembre']
 
+var casesCalendar =  document.getElementsByClassName('calendar_bloc_number');
+var dayBlocSelected;
+
 fillCalendar(currentMonth, currentYear);
 
 function fillCalendar(month, year) {
 
     //clear calendar
-    let casesCalendar =  document.getElementsByClassName('calendar_bloc_number');
     for (let caseCalendar of casesCalendar) {
         caseCalendar.innerHTML = "";
         caseCalendar.classList.remove('active');
@@ -35,6 +37,7 @@ function fillCalendar(month, year) {
     for(let i = firstDay - 1; i < daysInMonth; i++){
         casesCalendar[i].innerHTML=dayOfMonthNumber;
         casesCalendar[i].classList.add('active');
+        casesCalendar[i].addEventListener("click", buttontoggle);
         dayOfMonthNumber++;
     }
 }
@@ -71,3 +74,17 @@ function previousYear() {
     fillCalendar(currentMonth,currentYear);
 }
 
+function buttontoggle(idBloc) {
+    if(idBloc != null){
+        if(document.getElementById(this.id).classList.contains('active')) {
+            //unselect a bloc
+            if(dayBlocSelected!=null){
+                dayBlocSelected.classList.remove('selected');
+            }
+            
+            //update bloc selected
+            dayBlocSelected = document.getElementById(this.id);
+            dayBlocSelected.classList.add('selected');
+        }
+    }
+}
