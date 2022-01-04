@@ -6,10 +6,22 @@ let dayOfTheWeekList = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','
 let monthsList = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Décembre']
 
 var casesCalendar =  document.getElementsByClassName('calendar_bloc_number');
-var casesHours =  document.getElementsByClassName('dates_bloc');
 var dayBlocSelected;
 
+var casesHours =  document.getElementsByClassName('dates_bloc');
+var hoursList = [
+    '8h','8h15','8h30','8h45',
+    '9h','9h15','9h30','9h45',
+    '10h','10h15','10h30','10h45',
+    '11h','11h15','11h30','11h45',
+    '14h','14h15','14h30','14h45',
+    '15h','15h15','15h30','15h45',
+    '16h','16h15','16h30','16h45',
+    '17h','17h15','17h30','17h45'
+]
+
 fillCalendar(currentMonth, currentYear);
+fillHours();
 
 function fillCalendar(month, year) {
 
@@ -98,8 +110,16 @@ function buttontoggle() {
 function hourToggle() {
     if(this.style.backgroundColor =="rgb(39, 96, 168)"){
         this.style.backgroundColor = "";
+        this.style.color = "";
     }
     else{
-       this.style.backgroundColor = "rgb(39, 96, 168)"; 
+       this.style.backgroundColor = "rgb(39, 96, 168)";
+       this.style.color = "white"; 
+    }
+}
+
+function fillHours() {
+    for(i=0;i<16;i++) {
+        casesHours[i].innerHTML = hoursList[i];
     }
 }
