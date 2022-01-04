@@ -117,19 +117,6 @@ function buttontoggle() {
     }
 }
 
-function hourToggle() {
-    if(this.style.backgroundColor =="rgb(39, 96, 168)"){
-        this.style.backgroundColor = "";
-        this.style.color = "";
-    }
-    else{
-        this.style.backgroundColor = "rgb(39, 96, 168)";
-        this.style.color = "white";
-        unselectHour();
-        hourSelected = this;
-    }
-}
-
 function selectHour() {
     unselectHour();
     hourSelected = this;
