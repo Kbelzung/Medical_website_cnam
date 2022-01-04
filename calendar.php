@@ -129,11 +129,11 @@
     </div>
 
     <div class="dates_row">
-      <div class="dates_bloc dates_bloc_active"><-</div>
-      <div class="dates_bloc"></div>
-      <div class="dates_bloc"></div>
-      <div class="dates_bloc dates_bloc_active">-></div>
+      <div class="date_bloc_arrow dates_bloc_active"><-</div>
+      <div class="date_bloc_empty"></div>
+      <div class="date_bloc_empty"></div>
+      <div class="date_bloc_arrow dates_bloc_active">-></div>
     </div>
   </div>
 </div>
-<script src="js/initialize_calendar.js"></script>
+<script src="js/calendar.js"></script>

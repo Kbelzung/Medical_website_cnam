@@ -130,12 +130,28 @@
   flex-basis: 100%;
 }
 
+.date_bloc_arrow {
+  display: flex;
+  height: 100%;
+  flex-grow: 1;
+  margin: 10px;
+  flex-basis: 100%;
+}
+
 .dates_bloc_active {
   border-radius: 8px;
   background-color: #F3F9FF;
   justify-content: center;
   align-items: center;
   color: black;
+}
+
+.date_bloc_empty {
+  display: flex;
+  height: 100%;
+  flex-grow: 1;
+  margin: 10px;
+  flex-basis: 100%;
 }
 
 .dates_bloc_active:hover {

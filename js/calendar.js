@@ -6,6 +6,7 @@ let dayOfTheWeekList = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','
 let monthsList = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Décembre']
 
 var casesCalendar =  document.getElementsByClassName('calendar_bloc_number');
+var casesHours =  document.getElementsByClassName('dates_bloc');
 var dayBlocSelected;
 
 fillCalendar(currentMonth, currentYear);
@@ -13,9 +14,16 @@ fillCalendar(currentMonth, currentYear);
 function fillCalendar(month, year) {
 
     //clear calendar
-    for (let caseCalendar of casesCalendar) {
+    for(let caseCalendar of casesCalendar) {
         caseCalendar.innerHTML = "";
         caseCalendar.classList.remove('active');
+    }
+    
+    //clear hour cases
+    for(let caseHour of casesHours) {
+        caseHour.innerHTML = "";
+        //caseHour.classList.remove('dates_bloc_active');
+        caseHour.addEventListener("click", hourToggle);
     }
     
     //fill month
@@ -74,17 +82,24 @@ function previousYear() {
     fillCalendar(currentMonth,currentYear);
 }
 
-function buttontoggle(idBloc) {
-    if(idBloc != null){
-        if(document.getElementById(this.id).classList.contains('active')) {
-            //unselect a bloc
-            if(dayBlocSelected!=null){
-                dayBlocSelected.classList.remove('selected');
-            }
-            
-            //update bloc selected
-            dayBlocSelected = document.getElementById(this.id);
-            dayBlocSelected.classList.add('selected');
+function buttontoggle() {
+    if(document.getElementById(this.id).classList.contains('active')) {
+        //unselect a bloc
+        if(dayBlocSelected!=null){
+            dayBlocSelected.classList.remove('selected');
         }
+        
+        //update bloc selected
+        dayBlocSelected = document.getElementById(this.id);
+        dayBlocSelected.classList.add('selected');
+    }
+}
+
+function hourToggle() {
+    if(this.style.backgroundColor =="rgb(39, 96, 168)"){
+        this.style.backgroundColor = "";
+    }
+    else{
+       this.style.backgroundColor = "rgb(39, 96, 168)"; 
     }
 }
