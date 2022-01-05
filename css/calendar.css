@@ -41,7 +41,6 @@
 
 #calendar_row_days div {
   color: gray;
-  /*border: none;*/
 }
 
 #calendar_days_row div:hover {
@@ -84,11 +83,6 @@
 }
 
 .active:hover {
-  background-color: #2760A8;
-  color: white;
-}
-
-.selected {
   background-color: #2760A8;
   color: white;
 }

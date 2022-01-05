@@ -1,37 +1,30 @@
-let today = new Date();
-let currentMonth = today.getMonth();
-let currentYear = today.getFullYear();
-
+var today = new Date();
+var monthSelected = today.getMonth();
+var yearSelected = today.getFullYear();
+var daySelected;
+var hourSelected;
 let dayOfTheWeekList = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
 let monthsList = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Décembre']
-
-var casesCalendar =  document.getElementsByClassName('calendar_bloc_number');
-var dayBlocSelected;
-
-var casesHours =  document.getElementsByClassName('dates_bloc');
 var morningHoursList = [
     '8h','8h15','8h30','8h45',
     '9h','9h15','9h30','9h45',
     '10h','10h15','10h30','10h45',
     '11h','11h15','11h30','11h45'
 ];
-
 var afternoonHoursList = [
     '14h','14h15','14h30','14h45',
     '15h','15h15','15h30','15h45',
     '16h','16h15','16h30','16h45',
     '17h','17h15','17h30','17h45'
 ];
-
 var pageSelected = 1;
+var casesCalendar =  document.getElementsByClassName('calendar_bloc_number');
+var casesHours =  document.getElementsByClassName('dates_bloc');
 var arrowHours = document.getElementsByClassName('date_bloc_arrow');
-var hourSelected;
+arrowHours[0].addEventListener("click", nextHours);
+arrowHours[1].addEventListener("click", previousHours);
 
-
-fillCalendar(currentMonth, currentYear);
-fillHours();
-
-initCalendar();
+fillCalendar(monthSelected, yearSelected);
 
 function fillCalendar(month, year) {
 
@@ -40,12 +33,12 @@ function fillCalendar(month, year) {
         caseCalendar.innerHTML = "";
         caseCalendar.classList.remove('active');
     }
+    unselectDay();
+    unselectHour();
     
     //clear hour cases
     for(let caseHour of casesHours) {
         caseHour.innerHTML = "";
-        //caseHour.classList.remove('dates_bloc_active');
-        caseHour.addEventListener("click", selectHour);
     }
     
     //fill month
@@ -67,86 +60,91 @@ function fillCalendar(month, year) {
     for(let i = firstDay - 1; i < daysInMonth; i++){
         casesCalendar[i].innerHTML=dayOfMonthNumber;
         casesCalendar[i].classList.add('active');
-        casesCalendar[i].addEventListener("click", buttontoggle);
+        casesCalendar[i].addEventListener("click", select);
         dayOfMonthNumber++;
     }
+    
+    fillHours();
 }
 
 function nextMonth() {
-    currentMonth++;
-    if(currentMonth>11){
-        currentMonth = 0;
+    monthSelected++;
+    if(monthSelected>11){
+        monthSelected = 0;
     }
-    fillCalendar(currentMonth,currentYear);
+    fillCalendar(monthSelected,yearSelected);
 }
 
 function previousMonth() {
-    currentMonth--;
-    if(currentMonth < 0){
-        currentMonth = 11;
+    monthSelected--;
+    if(monthSelected < 0){
+        monthSelected = 11;
     }
-    fillCalendar(currentMonth,currentYear);
+    fillCalendar(monthSelected,yearSelected);
 }
 
 function nextYear() {
-    currentYear++;
-    if(currentYear > 2050) {
-        currentMonth = 2050;
+    yearSelected++;
+    if(yearSelected > 2050) {
+        monthSelected = 2050;
     }
-    fillCalendar(currentMonth,currentYear);
+    fillCalendar(monthSelected,yearSelected);
 }
 
 function previousYear() {
-    currentYear--;
-    if(currentYear < 2020) {
-        currentYear = 2020;
+    yearSelected--;
+    if(yearSelected < 2020) {
+        yearSelected = 2020;
     }
-    fillCalendar(currentMonth,currentYear);
+    fillCalendar(monthSelected,yearSelected);
 }
 
-function buttontoggle() {
-    if(document.getElementById(this.id).classList.contains('active')) {
-        //unselect a bloc
-        if(dayBlocSelected!=null){
-            dayBlocSelected.classList.remove('selected');
-        }
-        
-        //update bloc selected
-        dayBlocSelected = document.getElementById(this.id);
-        dayBlocSelected.classList.add('selected');
+function select() {
+    if(this.classList.contains('calendar_bloc_number')){
+        if(this!=daySelected){
+            unselectHour();
+            unselectDay();
+            daySelected = this;
+        } 
     }
+    else {
+        unselectHour();
+        hourSelected = this;
+    }
+
+    this.style.backgroundColor = "rgb(39, 96, 168)";
+    this.style.color = "white";
 }
 
-function selectHour() {
-    unselectHour();
-    hourSelected = this;
-    hourSelected.style.backgroundColor = "rgb(39, 96, 168)";
-    hourSelected.style.color = "white";
+function unselectDay() {
+    if(daySelected != null) {
+        daySelected.style.backgroundColor = "";
+        daySelected.style.color = "";
+        daySelected = null; 
+    }
 }
 
 function unselectHour() {
     if(hourSelected != null){
         hourSelected.style.backgroundColor = "";
         hourSelected.style.color = "";
+        hourSelected = null;
     }
 }
 
 function fillHours() {
-    if(pageSelected === 1){        
-        for(i = 0; i < morningHoursList.length; i++) {
-            casesHours[i].innerHTML = morningHoursList[i];
-        }
-    }
+    unselectHour();
+    var hoursList;
+    if(pageSelected === 1){   
+        hoursList = morningHoursList;
+    } 
     else {
-        for(i = 0; i < afternoonHoursList.length; i++) {
-            casesHours[i].innerHTML = afternoonHoursList[i];
-        }
+        hoursList = afternoonHoursList;
     }
-}
-
-function initCalendar() {
-    arrowHours[0].addEventListener("click", nextHours);
-    arrowHours[1].addEventListener("click", previousHours);
+    for(i = 0; i < hoursList.length; i++) {
+        casesHours[i].innerHTML = hoursList[i];
+        casesHours[i].addEventListener("click", select);
+    }
 }
 
 function nextHours() {
