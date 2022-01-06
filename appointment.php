@@ -15,5 +15,9 @@
     </head>
     <body>
         <?php include('header.php'); ?>
+        <div id=wrapper>
+            <?php include('calendar.php'); ?>
+        </div>
+        
     </body>
 </html>
