@@ -14,7 +14,7 @@
         $data = $check->fetch();
         $row = $check->rowCount();
 
-        $email = strtolower($email); //trasnform every mail to lower for verification
+        $email = strtolower($email); //transform every mail to lower for verification
         
         // If request > 0, then the user already exist
         if($row == 0){ 

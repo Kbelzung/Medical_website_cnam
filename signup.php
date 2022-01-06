@@ -54,7 +54,7 @@
                 }
             }
         ?>
-        <form action="signup_processing.php" method="post">
+        <form class="login" action="signup_processing.php" method="post">
             <div class="header">
                 <h3>Formulaire d'enregistrement</h3>
                 <p>S'enregistrer sur le site</p>
