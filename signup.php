@@ -4,6 +4,7 @@
   <title>Sign in</title>
 </head>
 <body>
+    <?php include('header.php'); ?>
     <div class="wrap">
         <?php 
             if(isset($_GET['reg_err']))

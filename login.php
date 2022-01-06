@@ -1,7 +1,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="css/login.css">
-  <title>Sign in</title>
+  <title>Connexion</title>
 </head>
 <body>
     <?php include('header.php'); ?>

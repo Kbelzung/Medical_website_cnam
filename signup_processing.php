@@ -34,7 +34,7 @@
                         ));
                         
                         // redirect with a success message
-                        header('Location:signup.php?reg_err=success');
+                        header('Location:login.php');
                         die();
                     }else{ header('Location: signup.php?reg_err=password'); die();}
                 }else{ header('Location: signup.php?reg_err=email'); die();}
