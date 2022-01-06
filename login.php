@@ -14,7 +14,7 @@
                 <p>Se connecter à votre espace</p>
             </div>
             <div class="form">
-                <input type="email" class="input" placeholder="Email">
+                <input type="login" class="input" placeholder="Identifiant">
             </div>
             <div class="form">
                 <input type="password" class="input" placeholder="Mot de passe">
@@ -23,7 +23,7 @@
                 <button class="button" type="submit">Login</button>
             </div>
             <div class="footer">
-                Pas encore de compte ? <a href="#">S'enregistrer</a>
+                Pas encore de compte ? <a href="signup.php">S'enregistrer</a>
             </div>
         </form>
     </div>

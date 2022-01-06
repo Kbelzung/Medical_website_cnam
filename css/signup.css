@@ -53,3 +53,6 @@ body{
 .footer{
     text-align: center;
 }
+.alert {
+    color: red;
+}
