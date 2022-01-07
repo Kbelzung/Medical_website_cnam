@@ -19,9 +19,20 @@ body{
 
 #wrapper {
     display: flex;
-    flex-direction: inline;
+    flex-direction: column;
+    align-items: center;
     height: 100%;
     width: 100%;
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+#validation {
+    height: 70px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: #2760A8;
+    color: white;
+    margin-top: 20px;
+    border: none;
 }

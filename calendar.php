@@ -129,4 +129,5 @@
     </div>
   </div>
 </div>
+<button id="validation">Valider</button>
 <script src="js/calendar.js"></script>
