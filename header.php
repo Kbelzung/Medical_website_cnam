@@ -6,6 +6,7 @@
         <li><a id="header_element_appointment" href="appointment.php">Prendre rendez-vous</a></li>
         <li><a id="header_element_administration" href="administration.php">Administration</a></li>
         <li class="right"><a id="header_element_login" href="login.php">Se connecter</a></li>
+        <li class="right"><a id="header_element_logout" href="unconnect.php">Se déconnecter</a></li>
     </ul>
 </nav>
 <script src="js/header.js"></script>
