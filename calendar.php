@@ -1,5 +1,13 @@
 <link rel="stylesheet" href="css/calendar.css">
 <div id="container">
+  <div id="doctors_list">
+    <select id="dropdownList">
+    <option value="doctor_1">doctor 1</option>
+    <option value="doctor_2" selected>doctor 2</option>
+    <option value="doctor_3">doctor 3</option>
+  </select>
+  </div>
+
   <div class="calendar">
     <header id="calendar_header">
       <div id="calendar_months">

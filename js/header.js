@@ -1,4 +1,4 @@
-currentPageColor = '#69d2e7';
+currentPageColor = '#2760A8';
 
 if(window.location.pathname.endsWith("my_appointments.php")) {  
     document.getElementById('header_element_my_appointment').style.backgroundColor = currentPageColor;
