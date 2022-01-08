@@ -28,6 +28,7 @@ fillCalendar(monthSelected, yearSelected);
 
 function fillCalendar(month, year) {
 
+    
     //clear calendar
     for(let caseCalendar of casesCalendar) {
         caseCalendar.innerHTML = "";
@@ -105,7 +106,9 @@ function select() {
             unselectHour();
             unselectDay();
             daySelected = this;
-        } 
+            
+            //fillHoursCalendar();
+        }
     }
     else {
         unselectHour();
@@ -162,3 +165,24 @@ function previousHours() {
     }
     fillHours();
 }
+
+function showDaysCalendar() {
+    var select = document.getElementById('doctors_list');
+    var idDoctor = select.options[select.selectedIndex].value;
+
+    if (idDoctor == "" || daySelected == null) {
+      document.getElementById("txtHint").innerHTML = "";
+      return;
+    } else {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("txtHint").innerHTML = this.responseText;
+        }
+      };
+      xmlhttp.open("GET","getuser.php?idDoctor="+idDoctor+"&daySelected="+daySelected,true);
+      
+      xmlhttp.send();
+      
+    }
+  }
