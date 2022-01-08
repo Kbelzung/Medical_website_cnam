@@ -1,11 +1,35 @@
+
 <link rel="stylesheet" href="css/calendar.css">
 <div id="container">
   <div id="doctors_list">
     <select id="dropdownList">
-    <option value="doctor_1">doctor 1</option>
-    <option value="doctor_2" selected>doctor 2</option>
-    <option value="doctor_3">doctor 3</option>
-  </select>
+      <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "medical_website_cnam";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "SELECT id, first_name, last_name, title, photo_path FROM doctor ORDER BY last_name";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+            echo "<option value='" . $row["id"]. "'>" . $row["first_name"]. " " . $row["last_name"] . "</option>";
+          }
+        } else {
+          echo "<option value='empty'>Vide</option>";
+        }
+        $conn->close();
+      ?>
+    </select>
   </div>
 
   <div class="calendar">
