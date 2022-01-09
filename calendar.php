@@ -4,30 +4,31 @@
   <div id="doctors_list">
     <select id="dropdownList">
       <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "medical_website_cnam";
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        // Check connection
-        if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
+        try {
+          $mysqlClient = new PDO('mysql:host=localhost;dbname=medical_website_cnam;charset=utf8', 'root', '');
         }
+        catch(Exception $e)
+        {
+          die('Erreur : '.$e->getMessage());
+        }
+        $sqlQuery = "SELECT id, first_name, last_name, title, photo_path FROM doctor ORDER BY last_name";
+        $statement = $mysqlClient->prepare($sqlQuery);
+        $statement->execute();
 
-        $sql = "SELECT id, first_name, last_name, title, photo_path FROM doctor ORDER BY last_name";
-        $result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
-          // output data of each row
-          while($row = $result->fetch_assoc()) {
-            echo "<option value='" . $row["id"]. "'>" . $row["first_name"]. " " . $row["last_name"] . "</option>";
+        $doctors = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        //counter to mark the first iteration as selected
+        $i = 0;
+        $len = count($doctors);
+        foreach ($doctors as $doctor) {
+          if ($i == 0) {
+            echo "<option value='" . $doctor["id"]. "'selected>" . $doctor["first_name"]. " " . $doctor["last_name"] . "</option>";
+          } else if ($i == $len - 1) {
+            echo "<option value='" . $doctor["id"]. "'>" . $doctor["first_name"]. " " . $doctor["last_name"] . "</option>";
           }
-        } else {
-          echo "<option value='empty'>Vide</option>";
+          $i++;
         }
-        $conn->close();
       ?>
     </select>
   </div>

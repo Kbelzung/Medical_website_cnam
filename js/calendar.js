@@ -6,16 +6,16 @@ var hourSelected;
 let dayOfTheWeekList = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
 let monthsList = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Décembre']
 var morningHoursList = [
-    '8h','8h15','8h30','8h45',
-    '9h','9h15','9h30','9h45',
-    '10h','10h15','10h30','10h45',
-    '11h','11h15','11h30','11h45'
+    '8h00','8h15','8h30','8h45',
+    '9h00','9h15','9h30','9h45',
+    '10h00','10h15','10h30','10h45',
+    '11h00','11h15','11h30','11h45'
 ];
 var afternoonHoursList = [
-    '14h','14h15','14h30','14h45',
-    '15h','15h15','15h30','15h45',
-    '16h','16h15','16h30','16h45',
-    '17h','17h15','17h30','17h45'
+    '14h00','14h15','14h30','14h45',
+    '15h00','15h15','15h30','15h45',
+    '16h00','16h15','16h30','16h45',
+    '17h00','17h15','17h30','17h45'
 ];
 var pageSelected = 1;
 var casesCalendar =  document.getElementsByClassName('calendar_bloc_number');
@@ -24,10 +24,12 @@ var arrowHours = document.getElementsByClassName('date_bloc_arrow');
 arrowHours[0].addEventListener("click", nextHours);
 arrowHours[1].addEventListener("click", previousHours);
 
+var select = document.getElementById('dropdownList');
+var idDoctor = select.options[select.selectedIndex].value;
+
 fillCalendar(monthSelected, yearSelected);
 
 function fillCalendar(month, year) {
-
     
     //clear calendar
     for(let caseCalendar of casesCalendar) {
@@ -58,14 +60,14 @@ function fillCalendar(month, year) {
     let daysInMonth = 32 - new Date(year, month, 32).getDate();
 
     var dayOfMonthNumber = 1;
-    for(let i = firstDay - 1; i < daysInMonth; i++){
+    for(let i = firstDay - 1; i < daysInMonth + (firstDay-1); i++){
         casesCalendar[i].innerHTML=dayOfMonthNumber;
         casesCalendar[i].classList.add('active');
-        casesCalendar[i].addEventListener("click", select);
+        casesCalendar[i].addEventListener("click", selection);
         dayOfMonthNumber++;
     }
-    
-    fillHours();
+
+    resetHoursCalendar();
 }
 
 function nextMonth() {
@@ -100,21 +102,21 @@ function previousYear() {
     fillCalendar(monthSelected,yearSelected);
 }
 
-function select() {
+function selection() {
     if(this.classList.contains('calendar_bloc_number')){
-        if(this!=daySelected){
+        if(this!=daySelected) {
             unselectHour();
             unselectDay();
             daySelected = this;
             
-            //fillHoursCalendar();
+            fillHoursCalendar();
         }
     }
     else {
         unselectHour();
         hourSelected = this;
     }
-
+    
     this.style.backgroundColor = "rgb(39, 96, 168)";
     this.style.color = "white";
 }
@@ -128,25 +130,10 @@ function unselectDay() {
 }
 
 function unselectHour() {
-    if(hourSelected != null){
+    if(hourSelected != null) {
         hourSelected.style.backgroundColor = "";
         hourSelected.style.color = "";
         hourSelected = null;
-    }
-}
-
-function fillHours() {
-    unselectHour();
-    var hoursList;
-    if(pageSelected === 1){   
-        hoursList = morningHoursList;
-    } 
-    else {
-        hoursList = afternoonHoursList;
-    }
-    for(i = 0; i < hoursList.length; i++) {
-        casesHours[i].innerHTML = hoursList[i];
-        casesHours[i].addEventListener("click", select);
     }
 }
 
@@ -155,7 +142,7 @@ function nextHours() {
         pageSelected++;
         unselectHour();
     }
-    fillHours();
+    fillHoursCalendar();
 }
 
 function previousHours() {
@@ -163,26 +150,73 @@ function previousHours() {
         pageSelected--;
         unselectHour();
     }
-    fillHours();
+    fillHoursCalendar();
 }
 
-function showDaysCalendar() {
-    var select = document.getElementById('doctors_list');
-    var idDoctor = select.options[select.selectedIndex].value;
-
-    if (idDoctor == "" || daySelected == null) {
-      document.getElementById("txtHint").innerHTML = "";
-      return;
-    } else {
-      var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("txtHint").innerHTML = this.responseText;
-        }
-      };
-      xmlhttp.open("GET","getuser.php?idDoctor="+idDoctor+"&daySelected="+daySelected,true);
-      
-      xmlhttp.send();
-      
+function getxhr() {
+    var xhr = null;
+    if (window.XMLHttpRequest) {
+      xhr = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+      try {
+        xhr = new ActiveXObject("Msxml2.XMLHTTP");
+      } catch (e) {
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+      }
     }
-  }
+    return xhr;
+}
+
+function fillHoursCalendar() {
+    
+    let xhr = getxhr();
+    let url = "http://medicalwebsitecnam/request_appointments_doctor.php?idDoctor="+idDoctor+"&year="+yearSelected+"&month="+(monthSelected+1)+"&day="+daySelected.innerHTML;
+    xhr.open("GET",url,true);
+    
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        if (xhr.status == 200) {
+            
+            let timesUsed = JSON.parse(xhr.responseText);
+            console.log(timesUsed);
+            let timesDisplayed = [];  
+            if(pageSelected==1) {
+                timesDisplayed = [...morningHoursList];
+            } else {
+                timesDisplayed = [...afternoonHoursList];
+            }
+            
+            for(let timeUsed of timesUsed) {
+                for(let i = 0; i < timesDisplayed.length; i++) {
+                    
+                    if(timesDisplayed[i] == timeUsed.time) {
+                        timesDisplayed[i] = "";
+                    }
+                }
+            }
+
+            for(i = 0; i < timesDisplayed.length; i++) {
+                if(timesDisplayed[i] != "") {
+                    casesHours[i].innerHTML = timesDisplayed[i];
+                    casesHours[i].addEventListener("click", select);
+                    casesHours[i].classList.add("dates_bloc_active");
+                }
+                else {
+                    casesHours[i].innerHTML = "";
+                    casesHours[i].removeEventListener("click", select);
+                    casesHours[i].classList.remove("dates_bloc_active");
+                }
+            }
+        }
+      }
+    };
+    xhr.send(null);
+}
+
+function resetHoursCalendar() {
+    for(let caseHours of casesHours) {
+        caseHours.innerHTML = "";
+        caseHours.removeEventListener("click", select);
+        caseHours.classList.remove("dates_bloc_active");
+    }
+}
