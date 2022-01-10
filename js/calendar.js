@@ -24,8 +24,9 @@ var arrowHours = document.getElementsByClassName('date_bloc_arrow');
 arrowHours[0].addEventListener("click", nextHours);
 arrowHours[1].addEventListener("click", previousHours);
 
-var select = document.getElementById('dropdownList');
-var idDoctor = select.options[select.selectedIndex].value;
+var selectDoctor = document.getElementById('dropdownList');
+selectDoctor.addEventListener("change", fillHoursCalendar);
+
 
 fillCalendar(monthSelected, yearSelected);
 
@@ -169,6 +170,8 @@ function getxhr() {
 
 function fillHoursCalendar() {
     
+    let idDoctor = selectDoctor.options[selectDoctor.selectedIndex].value;
+
     let xhr = getxhr();
     let url = "http://medicalwebsitecnam/request_appointments_doctor.php?idDoctor="+idDoctor+"&year="+yearSelected+"&month="+(monthSelected+1)+"&day="+daySelected.innerHTML;
     xhr.open("GET",url,true);
@@ -178,7 +181,6 @@ function fillHoursCalendar() {
         if (xhr.status == 200) {
             
             let timesUsed = JSON.parse(xhr.responseText);
-            console.log(timesUsed);
             let timesDisplayed = [];  
             if(pageSelected==1) {
                 timesDisplayed = [...morningHoursList];
@@ -198,12 +200,12 @@ function fillHoursCalendar() {
             for(i = 0; i < timesDisplayed.length; i++) {
                 if(timesDisplayed[i] != "") {
                     casesHours[i].innerHTML = timesDisplayed[i];
-                    casesHours[i].addEventListener("click", select);
+                    casesHours[i].addEventListener("click", selection);
                     casesHours[i].classList.add("dates_bloc_active");
                 }
                 else {
                     casesHours[i].innerHTML = "";
-                    casesHours[i].removeEventListener("click", select);
+                    casesHours[i].removeEventListener("click", selection);
                     casesHours[i].classList.remove("dates_bloc_active");
                 }
             }
@@ -216,7 +218,7 @@ function fillHoursCalendar() {
 function resetHoursCalendar() {
     for(let caseHours of casesHours) {
         caseHours.innerHTML = "";
-        caseHours.removeEventListener("click", select);
+        caseHours.removeEventListener("click", selection);
         caseHours.classList.remove("dates_bloc_active");
     }
 }
