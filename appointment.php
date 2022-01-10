@@ -173,9 +173,14 @@
             </div>
         </div>
         
-        <div id=wrapper_center>
+        <form class="login" action="login_processing.php" method="post">   
+            <div id=wrapper_center>
+                <input type="hidden" id="custId" name="custId" value="3487">
+                <input type="hidden" id="custId" name="custId" value="3487">
+                <input type="hidden" id="custId" name="custId" value="3487">
+
                 <label for="checkbox_first_appointment">Premier rendez-vous ?</label>
-                <input type="checkbox" id="checkbox_first_appointment" name="scales">
+                <input type="checkbox" id="checkbox_first_appointment" name="scales"></input>
 
                 <label for="select_reason">Motif de rendez-vous:</label>
                 <select name="select_reason" id="select_reason">
@@ -188,9 +193,12 @@
 
                 <label for="textarea_note">Observation:</label>
                 <textarea id="textarea_note" name="textarea_note" rows="5" cols="33"></textarea>
-        </div>
-
-        <button id="validation">Valider</button>
+            </div>
+            <div class="container_center">
+                <button id="validation">Valider</button>
+            </div>
+            
+        </form>
     </body>
     <script src="js/appointment.js"></script>
 </html>

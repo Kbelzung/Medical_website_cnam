@@ -44,6 +44,11 @@ body{
     flex-direction: column;
 }
 
+.container_center {
+    display: flex;
+    justify-content: center;
+}
+
 /* ----------------------------------------------- Calendar ----------------------------------------------- */
 #container {
     display: inline-flex;
