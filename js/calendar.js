@@ -1,3 +1,13 @@
+var casesCalendar =  document.getElementsByClassName('calendar_bloc_number');
+var casesHours =  document.getElementsByClassName('dates_bloc');
+var arrowHours = document.getElementsByClassName('date_bloc_arrow');
+var selectDoctor = document.getElementById('dropdownList');
+var monthElement = document.getElementById('calendar_months_text');
+var yearElement = document.getElementById('calendar_years_text');
+
+arrowHours[0].addEventListener("click", nextHours);
+arrowHours[1].addEventListener("click", previousHours);
+selectDoctor.addEventListener("change", fillHoursCalendar);
 var today = new Date();
 var monthSelected = today.getMonth();
 var yearSelected = today.getFullYear();
@@ -18,57 +28,63 @@ var afternoonHoursList = [
     '17h00','17h15','17h30','17h45'
 ];
 var pageSelected = 1;
-var casesCalendar =  document.getElementsByClassName('calendar_bloc_number');
-var casesHours =  document.getElementsByClassName('dates_bloc');
-var arrowHours = document.getElementsByClassName('date_bloc_arrow');
-arrowHours[0].addEventListener("click", nextHours);
-arrowHours[1].addEventListener("click", previousHours);
 
-var selectDoctor = document.getElementById('dropdownList');
-selectDoctor.addEventListener("change", fillHoursCalendar);
+fillCalendar();
 
+function fillCalendar() {
+    clearDays();
+    clearHours();
 
-fillCalendar(monthSelected, yearSelected);
+    monthElement.innerHTML = monthsList[monthSelected];
+    yearElement.innerHTML = yearSelected;
 
-function fillCalendar(month, year) {
-    
-    //clear calendar
+    let dateToday = new Date(today);
+    let todayDayOfMonthNumber = dateToday.getDate();
+
+    let firstDay = getDayOfWeekFirstOfMonth();
+    let daysInMonth = 32 - new Date(yearSelected, monthSelected, 32).getDate();
+    let dayOfMonthNumber = 1;
+    for(let i = firstDay - 1; i < daysInMonth + (firstDay-1); i++){
+        casesCalendar[i].innerHTML=dayOfMonthNumber;
+        if(monthSelected == today.getMonth() && yearSelected == today.getFullYear()) {
+            if(dayOfMonthNumber >= todayDayOfMonthNumber) {
+                casesCalendar[i].classList.add('active');
+                casesCalendar[i].addEventListener("click", selection);
+            }
+        }
+        else{
+            casesCalendar[i].classList.add('active');
+            casesCalendar[i].addEventListener("click", selection);
+        }
+
+        dayOfMonthNumber++;
+    }
+}
+
+function clearDays() {
     for(let caseCalendar of casesCalendar) {
         caseCalendar.innerHTML = "";
         caseCalendar.classList.remove('active');
     }
     unselectDay();
-    unselectHour();
-    
-    //clear hour cases
+}
+
+function clearHours() {
     for(let caseHour of casesHours) {
         caseHour.innerHTML = "";
+        caseHour.removeEventListener("click", selection);
+        caseHour.classList.remove("dates_bloc_active");
     }
-    
-    //fill month
-    let monthElement = document.getElementById('calendar_months_text');
-    monthElement.innerHTML = monthsList[month];
-    
-    //fill year
-    let yearElement = document.getElementById('calendar_years_text');
-    yearElement.innerHTML = year;
+    unselectHour();
+}
 
-    let firstDay = (new Date(year, month)).getDay();
+function getDayOfWeekFirstOfMonth() {
+    let firstDay = (new Date(yearSelected, monthSelected)).getDay();
     //if firstDay = 0 (Sunday) then it's need to be 7 for our grid
     if(firstDay == 0){
         firstDay = 7;
     }
-    let daysInMonth = 32 - new Date(year, month, 32).getDate();
-
-    var dayOfMonthNumber = 1;
-    for(let i = firstDay - 1; i < daysInMonth + (firstDay-1); i++){
-        casesCalendar[i].innerHTML=dayOfMonthNumber;
-        casesCalendar[i].classList.add('active');
-        casesCalendar[i].addEventListener("click", selection);
-        dayOfMonthNumber++;
-    }
-
-    resetHoursCalendar();
+    return firstDay;
 }
 
 function nextMonth() {
@@ -76,31 +92,36 @@ function nextMonth() {
     if(monthSelected>11){
         monthSelected = 0;
     }
-    fillCalendar(monthSelected,yearSelected);
+    fillCalendar();
 }
 
 function previousMonth() {
     monthSelected--;
+    if(yearSelected==today.getFullYear()){
+        if(monthSelected<(today.getMonth())){
+            monthSelected=(today.getMonth());
+        }
+    }
     if(monthSelected < 0){
         monthSelected = 11;
     }
-    fillCalendar(monthSelected,yearSelected);
+    fillCalendar();
 }
 
 function nextYear() {
     yearSelected++;
-    if(yearSelected > 2050) {
-        monthSelected = 2050;
+    if(yearSelected > (today.getFullYear()+2)) {
+        yearSelected = (today.getFullYear()+2);
     }
-    fillCalendar(monthSelected,yearSelected);
+    fillCalendar();
 }
 
 function previousYear() {
     yearSelected--;
-    if(yearSelected < 2020) {
-        yearSelected = 2020;
+    if(yearSelected < today.getFullYear()) {
+        yearSelected = today.getFullYear();
     }
-    fillCalendar(monthSelected,yearSelected);
+    fillCalendar();
 }
 
 function selection() {
@@ -109,7 +130,6 @@ function selection() {
             unselectHour();
             unselectDay();
             daySelected = this;
-            
             fillHoursCalendar();
         }
     }
@@ -117,7 +137,6 @@ function selection() {
         unselectHour();
         hourSelected = this;
     }
-    
     this.style.backgroundColor = "rgb(39, 96, 168)";
     this.style.color = "white";
 }
@@ -142,16 +161,16 @@ function nextHours() {
     if(pageSelected < 1){
         pageSelected++;
         unselectHour();
+        fillHoursCalendar();
     }
-    fillHoursCalendar();
 }
 
 function previousHours() {
     if(pageSelected > 0){
         pageSelected--;
         unselectHour();
+        fillHoursCalendar();
     }
-    fillHoursCalendar();
 }
 
 function getxhr() {
@@ -169,9 +188,7 @@ function getxhr() {
 }
 
 function fillHoursCalendar() {
-    
     let idDoctor = selectDoctor.options[selectDoctor.selectedIndex].value;
-
     let xhr = getxhr();
     let url = "http://medicalwebsitecnam/request_appointments_doctor.php?idDoctor="+idDoctor+"&year="+yearSelected+"&month="+(monthSelected+1)+"&day="+daySelected.innerHTML;
     xhr.open("GET",url,true);
@@ -179,7 +196,6 @@ function fillHoursCalendar() {
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4) {
         if (xhr.status == 200) {
-            
             let timesUsed = JSON.parse(xhr.responseText);
             let timesDisplayed = [];  
             if(pageSelected==1) {
@@ -213,12 +229,4 @@ function fillHoursCalendar() {
       }
     };
     xhr.send(null);
-}
-
-function resetHoursCalendar() {
-    for(let caseHours of casesHours) {
-        caseHours.innerHTML = "";
-        caseHours.removeEventListener("click", selection);
-        caseHours.classList.remove("dates_bloc_active");
-    }
 }
