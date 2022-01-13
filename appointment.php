@@ -4,7 +4,6 @@
     <head>
         <title>Prendre rendez-vous</title>
         <link rel="stylesheet" href="css/appointment.css">
-        <link rel="stylesheet" href="css/calendar.css">
     </head>
     <body>
         <?php include('header.php'); ?>
@@ -173,17 +172,17 @@
             </div>
         </div>
         
-        <form class="login" action="login_processing.php" method="post">   
+        <form class="login" action="appointment_processing.php" method="post">   
             <div id=wrapper_center>
-                <input type="hidden" id="custId" name="custId" value="3487">
-                <input type="hidden" id="custId" name="custId" value="3487">
-                <input type="hidden" id="custId" name="custId" value="3487">
+                <input type="hidden" id="hidden_idDoctor" name="idDoctor" value="" required="required">
+                <input type="hidden" id="hidden_date" name="date" value="" required="required">
+                <input type="hidden" id="hidden_hour" name="hour" value="" required="required">
 
                 <label for="checkbox_first_appointment">Premier rendez-vous ?</label>
-                <input type="checkbox" id="checkbox_first_appointment" name="scales"></input>
+                <input type="checkbox" id="checkbox_first_appointment" name="checkbox_first_appointment" value="Yes"></input>
 
                 <label for="select_reason">Motif de rendez-vous:</label>
-                <select name="select_reason" id="select_reason">
+                <select name="select_reason" id="select_reason" required="required">
                     <option value="">--Choisir un motif--</option>
                     <option value="value1">Consultation de médecine générale</option>
                     <option value="value2">Renouvellement de traitement</option>
@@ -195,7 +194,7 @@
                 <textarea id="textarea_note" name="textarea_note" rows="5" cols="33"></textarea>
             </div>
             <div class="container_center">
-                <button id="validation">Valider</button>
+                <button id="validation" type="submit">Valider</button>
             </div>
             
         </form>

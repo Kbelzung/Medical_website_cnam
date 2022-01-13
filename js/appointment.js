@@ -4,6 +4,9 @@ var arrowHours = document.getElementsByClassName('date_bloc_arrow');
 var selectDoctor = document.getElementById('dropdownList');
 var monthElement = document.getElementById('calendar_months_text');
 var yearElement = document.getElementById('calendar_years_text');
+var hidden_idDoctor = document.getElementById('hidden_idDoctor');
+var hidden_date = document.getElementById('hidden_date');
+var hidden_hour = document.getElementById('hidden_hour');
 
 arrowHours[0].addEventListener("click", nextHours);
 arrowHours[1].addEventListener("click", previousHours);
@@ -131,11 +134,14 @@ function selection() {
             unselectDay();
             daySelected = this;
             fillHoursCalendar();
+            update_form();
         }
+        
     }
     else {
         unselectHour();
         hourSelected = this;
+        update_form();
     }
     this.style.backgroundColor = "rgb(39, 96, 168)";
     this.style.color = "white";
@@ -145,7 +151,7 @@ function unselectDay() {
     if(daySelected != null) {
         daySelected.style.backgroundColor = "";
         daySelected.style.color = "";
-        daySelected = null; 
+        daySelected = null;
     }
 }
 
@@ -194,39 +200,52 @@ function fillHoursCalendar() {
     xhr.open("GET",url,true);
     
     xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4) {
-        if (xhr.status == 200) {
-            let timesUsed = JSON.parse(xhr.responseText);
-            let timesDisplayed = [];  
-            if(pageSelected==1) {
-                timesDisplayed = [...morningHoursList];
-            } else {
-                timesDisplayed = [...afternoonHoursList];
-            }
-            
-            for(let timeUsed of timesUsed) {
-                for(let i = 0; i < timesDisplayed.length; i++) {
-                    
-                    if(timesDisplayed[i] == timeUsed.time) {
-                        timesDisplayed[i] = "";
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                let timesUsed = JSON.parse(xhr.responseText);
+                let timesDisplayed = [];
+                if(pageSelected==1) {
+                    timesDisplayed = [...morningHoursList];
+                } else {
+                    timesDisplayed = [...afternoonHoursList];
+                }
+                
+                for(let timeUsed of timesUsed) {
+                    for(let i = 0; i < timesDisplayed.length; i++) {
+                        
+                        if(timesDisplayed[i] == timeUsed.time) {
+                            timesDisplayed[i] = "";
+                        }
+                    }
+                }
+
+                for(i = 0; i < timesDisplayed.length; i++) {
+                    if(timesDisplayed[i] != "") {
+                        casesHours[i].innerHTML = timesDisplayed[i];
+                        casesHours[i].addEventListener("click", selection);
+                        casesHours[i].classList.add("dates_bloc_active");
+                    }
+                    else {
+                        casesHours[i].innerHTML = "";
+                        casesHours[i].removeEventListener("click", selection);
+                        casesHours[i].classList.remove("dates_bloc_active");
                     }
                 }
             }
-
-            for(i = 0; i < timesDisplayed.length; i++) {
-                if(timesDisplayed[i] != "") {
-                    casesHours[i].innerHTML = timesDisplayed[i];
-                    casesHours[i].addEventListener("click", selection);
-                    casesHours[i].classList.add("dates_bloc_active");
-                }
-                else {
-                    casesHours[i].innerHTML = "";
-                    casesHours[i].removeEventListener("click", selection);
-                    casesHours[i].classList.remove("dates_bloc_active");
-                }
-            }
         }
-      }
     };
     xhr.send(null);
+}
+
+function update_form() {
+    if(selectDoctor.options[selectDoctor.selectedIndex].value != null && yearSelected != null && monthSelected != null && daySelected.innerHTML != null && hourSelected != null) {
+        hidden_idDoctor.value = selectDoctor.options[selectDoctor.selectedIndex].value;
+
+        if((monthSelected+1) < 10){
+            hidden_date.value = yearSelected + '-0' + (monthSelected+1) + '-' + daySelected.innerHTML;    
+        }else {
+            hidden_date.value = yearSelected + '-' + (monthSelected+1) + '-' + daySelected.innerHTML;
+        }
+        hidden_hour.value = hourSelected.innerHTML;
+    }
 }
