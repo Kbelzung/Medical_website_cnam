@@ -29,7 +29,6 @@
             $stmt= $bdd->prepare($request);
             $stmt->execute([$idDoctor, $_SESSION['id'], $date, $hour,$checkbox_first_appointment, $select_reason, $textarea_note]);
 
-
             echo "\nPDO::errorInfo():\n";
             print_r($stmt->errorInfo());
             $stmt->debugDumpParams();

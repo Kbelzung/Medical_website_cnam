@@ -23,44 +23,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <h6 >06:00 PM</h6>
-                                <small>2 Feb 2021</small>
-                            </td>
-                            <td>
-                                <h6>Dr. Ananth</h6>
-                            </td>
-                            <td>
-                                <h6>+91 9876543215</h6>
-                            </td>
-                            <td>
-                                <h6>Docteur1@mail.com</h6>
-                            </td>
-                            <td>
-                                <button id="validation" type="submit">X</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <h6 >06:00 PM</h6>
-                                <small>2 Feb 2021</small>
-                            </td>
-                            <td>
-                                <h6>Dr. Ananth</h6>
-                            </td>
-                            <td>
-                                <h6>+91 9876543215</h6>
-                            </td>
-                            <td>
-                                <h6>Docteur1@mail.com</h6>
-                            </td>
-                            <td>
-                                <button id="validation" type="submit">X</button>
-                            </td>
-                        </tr>
-
+                        <?php include('get_list_appointment.php'); ?>
                     </tbody>
                 </table>
             </div>
