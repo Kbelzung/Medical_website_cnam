@@ -5,6 +5,7 @@
 }
 
 html {
+    height: 100%;
     font-family: sans-serif;
 }
 
@@ -25,8 +26,10 @@ body{
 }
 
 .main-content {
+    height: 100%;
 	padding-top: 100px;
 	padding-bottom: 100px;
+    overflow: auto;
 }
 
 .table {
