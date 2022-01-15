@@ -33,6 +33,6 @@
             print_r($stmt->errorInfo());
             $stmt->debugDumpParams();
             
-            //header('Location: my_appointments.php'); die();
+            header('Location: my_appointments.php'); die();
         }else{ header('Location: appointment.php'); die();}
     }else{ header('Location: appointment.php'); die();}

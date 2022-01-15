@@ -29,4 +29,5 @@
             </div>
 	    </section>
     </body>
+    <script src="js/my_appointments.js"></script>
 </html>
