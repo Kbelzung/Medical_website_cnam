@@ -11,11 +11,12 @@
             <div id=container> 
                 <div id=container_calendar>
                     <div id="doctors_list">
-                        <select id="dropdownList">
-                            <?php include('get_list_doctor.php'); ?>
-                        </select>
+                        <table class="table">
+                            <tbody>
+                                <?php include('get_list_doctor.php'); ?>
+                            </tbody>
+                        </table>
                     </div>
-
                     <div class="calendar">
                         <header id="calendar_header">
                         <div id="calendar_months">

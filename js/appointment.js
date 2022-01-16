@@ -1,7 +1,7 @@
 var casesCalendar =  document.getElementsByClassName('calendar_bloc_number');
 var casesHours =  document.getElementsByClassName('dates_bloc');
 var arrowHours = document.getElementsByClassName('date_bloc_arrow');
-var selectDoctor = document.getElementById('dropdownList');
+var cardDoctors = document.getElementsByClassName('doctor_card');
 var monthElement = document.getElementById('calendar_months_text');
 var yearElement = document.getElementById('calendar_years_text');
 var hidden_idDoctor = document.getElementById('hidden_idDoctor');
@@ -10,7 +10,11 @@ var hidden_hour = document.getElementById('hidden_hour');
 
 arrowHours[0].addEventListener("click", nextHours);
 arrowHours[1].addEventListener("click", previousHours);
-selectDoctor.addEventListener("change", fillHoursCalendar);
+for(let cardDoctor of cardDoctors) {
+    cardDoctor.addEventListener("click", selection);
+}
+
+var doctorSelected;
 var today = new Date();
 var monthSelected = today.getMonth();
 var yearSelected = today.getFullYear();
@@ -129,22 +133,37 @@ function previousYear() {
 
 function selection() {
     if(this.classList.contains('calendar_bloc_number')){
-        if(this!=daySelected) {
-            unselectHour();
-            unselectDay();
-            daySelected = this;
-            fillHoursCalendar();
-            update_form();
+        if(doctorSelected != null){
+            if(this!=daySelected) {
+                unselectHour();
+                unselectDay();
+                daySelected = this;
+                fillHoursCalendar();
+                update_form();
+            }
         }
-        
+    }
+    else if(this.classList.contains('doctor_card')){
+        unselectDoctor();
+        doctorSelected = this;
     }
     else {
         unselectHour();
         hourSelected = this;
         update_form();
     }
-    this.style.backgroundColor = "rgb(39, 96, 168)";
-    this.style.color = "white";
+    if(doctorSelected != null){
+        this.style.backgroundColor = "rgb(39, 96, 168)";
+        this.style.color = "white";
+    }
+}
+
+function unselectDoctor() {
+    if(doctorSelected != null) {
+        doctorSelected.style.backgroundColor = "";
+        doctorSelected.style.color = "";
+        doctorSelected = null;
+    }
 }
 
 function unselectDay() {
@@ -194,7 +213,7 @@ function getxhr() {
 }
 
 function fillHoursCalendar() {
-    let idDoctor = selectDoctor.options[selectDoctor.selectedIndex].value;
+    let idDoctor = doctorSelected.getAttribute("value");
     let xhr = getxhr();
     let url = "http://medicalwebsitecnam/request_appointments_doctor.php?idDoctor="+idDoctor+"&year="+yearSelected+"&month="+(monthSelected+1)+"&day="+daySelected.innerHTML;
     xhr.open("GET",url,true);
@@ -238,14 +257,13 @@ function fillHoursCalendar() {
 }
 
 function update_form() {
-    if(selectDoctor.options[selectDoctor.selectedIndex].value != null && yearSelected != null && monthSelected != null && daySelected.innerHTML != null && hourSelected != null) {
-        hidden_idDoctor.value = selectDoctor.options[selectDoctor.selectedIndex].value;
-
+    if(doctorSelected.getAttribute("value") != null && yearSelected != null && monthSelected != null && daySelected.innerHTML != null && hourSelected != null) {
         if((monthSelected+1) < 10){
             hidden_date.value = yearSelected + '-0' + (monthSelected+1) + '-' + daySelected.innerHTML;    
         }else {
             hidden_date.value = yearSelected + '-' + (monthSelected+1) + '-' + daySelected.innerHTML;
         }
         hidden_hour.value = hourSelected.innerHTML;
+        hidden_idDoctor.value = doctorSelected.getAttribute("value");
     }
 }
