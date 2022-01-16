@@ -12,6 +12,10 @@
             <div class="container_form">
                 <form action="database_access/add_doctor_processing.php">
 
+                    <div class="header">
+                        <h3>Enregistrer un nouveau docteur</h3>
+                    </div>
+
                     <label for="fname">Prénom</label>
                     <input type="text" id="fname" name="firstname" required="required">
 
@@ -30,7 +34,7 @@
                     <label for="presentation">Présentation</label>
                     <textarea id="presentation" name="presentation" style="height:200px" required="required"></textarea>
 
-                    <input type="submit" value="Submit">
+                    <input type="submit" value="Valider">
                 </form>
             </div>
         </div>

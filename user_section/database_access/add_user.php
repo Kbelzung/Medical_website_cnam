@@ -1,15 +1,18 @@
 <?php 
     require_once 'config.php';
 
-    if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['password_retype']))
+    if(!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['password_retype']))
     {
         // Patch XSS
+        $firstname = htmlspecialchars($_POST['firstname']);
+        $lastname = htmlspecialchars($_POST['lastname']);
         $email = htmlspecialchars($_POST['email']);
         $password = htmlspecialchars($_POST['password']);
         $password_retype = htmlspecialchars($_POST['password_retype']);
+        $phone = htmlspecialchars($_POST['phone']);
 
         // if user exist
-        $check = $bdd->prepare('SELECT email, password FROM user WHERE email = ?');
+        $check = $bdd->prepare('SELECT email FROM user WHERE email = ?');
         $check->execute(array($email));
         $data = $check->fetch();
         $row = $check->rowCount();
@@ -26,11 +29,14 @@
                         $cost = ['cost' => 12];
                         $password = password_hash($password, PASSWORD_BCRYPT, $cost);
 
-                        $insert = $bdd->prepare('INSERT INTO user(email, password) VALUES(:email, :password)');
+                        $insert = $bdd->prepare('INSERT INTO user(email, password, first_name, last_name, phone) VALUES(:email, :password, :first_name, :last_name, :phone)');
                         
                         $insert->execute(array(
                             'email' => $email,
-                            'password' => $password
+                            'password' => $password,
+                            'first_name' => $firstname,
+                            'last_name' => $lastname,
+                            'phone' => $phone
                         ));
                         
                         // redirect with a success message
@@ -40,4 +46,4 @@
                 }else{ header('Location: ../signup.php?reg_err=email'); die();}
             }else{ header('Location: ../signup.php?reg_err=email_length'); die();}
         }else{ header('Location: ../signup.php?reg_err=already'); die();}
-    }
+    }else{ header('Location: ../signup.php?reg_err=empty_inputs'); die();}

@@ -1,78 +1,42 @@
 <html>
 <head>
+<link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/signup.css">
   <title>Sign in</title>
 </head>
 <body>
     <?php include('header_not_connected.php'); ?>
-    <div class="wrap">
-        <?php 
-            if(isset($_GET['reg_err']))
-            {
-                $err = htmlspecialchars($_GET['reg_err']);
+    <div id="container">
+        <?php include('error_messages.php'); ?>
 
-                switch($err)
-                {
-                    case 'success':
-                    ?>
-                        <div class="alert">
-                            Inscription réussie !
-                        </div>
-                    <?php
-                    break;
+        <div class="container_form">
+            <form action="database_access/add_user.php" method="post">
+                <div class="header">
+                    <h3>Formulaire d'enregistrement</h3>
+                    <p>S'enregistrer sur le site</p>
+                </div>
 
-                    case 'password':
-                    ?>
-                        <div class="alert">
-                            Mot de passe différent
-                        </div>
-                    <?php
-                    break;
+                <label for="fname">Prénom</label>
+                <input type="text" id="fname" name="firstname" required="required">
 
-                    case 'email':
-                    ?>
-                        <div class="alert">
-                            Email non valide
-                        </div>
-                    <?php
-                    break;
+                <label for="lname">Nom de famille</label>
+                <input type="text" id="lname" name="lastname" required="required">
 
-                    case 'email_length':
-                    ?>
-                        <div class="alert">
-                            Email trop long
-                        </div>
-                    <?php 
-                    break;
+                <label for="phone">Téléphone</label>
+                <input type="tel" id="phone" name="phone">
 
-                    case 'already':
-                    ?>
-                        <div class="alert">
-                            Email déjà utilisé
-                        </div>
-                    <?php 
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required="required">
 
-                }
-            }
-        ?>
-        <form class="login" action="database_access/signup_processing.php" method="post">
-            <div class="header">
-                <h3>Formulaire d'enregistrement</h3>
-                <p>S'enregistrer sur le site</p>
-            </div>
-            <div class="form">
-                <input type="email" name="email" class="input" placeholder="Email" required="required">
-            </div>
-            <div class="form">
-            <input type="password" name="password" class="input" placeholder="Mot de passe" required="required">
-            </div>
-            <div class="form">
-            <input type="password" name="password_retype" class="input" placeholder="Re-tapez le mot de passe" required="required" autocomplete="off">
-            </div>
-            <div class="form">
-                <button class="button" type="submit">S'enregistrer</button>
-            </div>
-        </form>
+                <label for="psw">Mot de passe</label>
+                <input type="password" name="password" required>
+
+                <label for="psw-repeat">Répéter votre mot de passe</label>
+                <input type="password" name="password_retype" required>
+
+                <input type="submit" value="Valider">
+            </form>
+        </div>
     </div>
 </body>
 </html>
