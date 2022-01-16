@@ -26,9 +26,9 @@
                     $_SESSION['loggedin'] = TRUE;
                     $_SESSION['email'] = $data['email'] ;
                     $_SESSION['id'] = $data['id'];
-                    header('Location: my_appointments.php');
+                    header('Location: ../my_appointments.php');
                     die();
-                }else{ header('Location: login.php?login_err=password'); die(); }
-            }else{ header('Location: login.php?login_err=email'); die(); }
-        }else{ header('Location: login.php?login_err=already'); die(); }
-    }else{ header('Location: login.php?login_err=already'); die();}
+                }else{ header('Location: ../login.php?login_err=password'); die(); }
+            }else{ header('Location: ../login.php?login_err=email'); die(); }
+        }else{ header('Location: ../login.php?login_err=already'); die(); }
+    }else{ header('Location: ../login.php?login_err=already'); die();}

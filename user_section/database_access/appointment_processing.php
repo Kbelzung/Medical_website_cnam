@@ -4,10 +4,9 @@
     require_once 'config.php';
 
     // Patch XSS
-    $idDoctor = htmlspecialchars('1');
+    $idDoctor = htmlspecialchars($_POST['idDoctor']);
     $date = htmlspecialchars($_POST['date']);
     $hour = htmlspecialchars($_POST['hour']);
-
     if(isset($_POST['checkbox_first_appointment']) && $_POST['checkbox_first_appointment'] == 'Yes') {
         $checkbox_first_appointment = 1;
     }
@@ -16,7 +15,7 @@
     }
     $select_reason = htmlspecialchars($_POST['select_reason']);
     $textarea_note = htmlspecialchars($_POST['textarea_note']);
-
+    
     if(!empty($idDoctor) && !empty($date) && !empty($hour) && !empty($idDoctor) && !empty($select_reason)) {
 
         $sqlQuery = "SELECT id FROM appointment WHERE doctor_id = $idDoctor AND date = $date AND time = $hour";
@@ -30,8 +29,10 @@
             $stmt= $bdd->prepare($request);
             $stmt->execute([$idDoctor, $_SESSION['id'], $date, $hour,$checkbox_first_appointment, $select_reason, $textarea_note]);
 
-            header('Location: test_result_processing.php'); die();
-        }else{ header('Location: test_result_processing.php'); die();}
-    }else{ header('Location: test_result_processing.php'); die();}
-
-    
+            echo "\nPDO::errorInfo():\n";
+            print_r($stmt->errorInfo());
+            $stmt->debugDumpParams();
+            
+            header('Location: ../my_appointments.php'); die();
+        }else{ header('Location: ../appointment.php'); die();}
+    }else{ header('Location: ../appointment.php'); die();}

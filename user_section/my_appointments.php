@@ -1,4 +1,4 @@
-<?php include('verify_connection.php'); ?>
+<?php include('database_access/verify_connection.php'); ?>
 <!doctype html>
 <html>
     <head>
@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="css/my_appointments.css">
     </head>
     <body>
-        <?php include('header.php'); ?>
+        <?php include('header_connected.php'); ?>
 
         <section class="main-content">
             <div class="container">
@@ -23,7 +23,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php include('get_list_appointment.php'); ?>
+                        <?php include('database_access/get_list_appointment.php'); ?>
                     </tbody>
                 </table>
             </div>

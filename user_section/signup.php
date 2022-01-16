@@ -4,7 +4,7 @@
   <title>Sign in</title>
 </head>
 <body>
-    <?php include('header.php'); ?>
+    <?php include('header_not_connected.php'); ?>
     <div class="wrap">
         <?php 
             if(isset($_GET['reg_err']))
@@ -55,7 +55,7 @@
                 }
             }
         ?>
-        <form class="login" action="signup_processing.php" method="post">
+        <form class="login" action="database_access/signup_processing.php" method="post">
             <div class="header">
                 <h3>Formulaire d'enregistrement</h3>
                 <p>S'enregistrer sur le site</p>

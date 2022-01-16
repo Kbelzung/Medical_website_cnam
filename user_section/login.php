@@ -4,7 +4,7 @@
   <title>Connexion</title>
 </head>
 <body>
-    <?php include('header.php'); ?>
+    <?php include('header_not_connected.php'); ?>
     <div class="wrap">
     <?php 
         if(isset($_GET['login_err']))
@@ -39,7 +39,7 @@
             }
         }
         ?> 
-        <form class="login" action="login_processing.php" method="post">
+        <form class="login" action="database_access/login_processing.php" method="post">
             <div class="header">
                 <h3>Formulaire de connexion</h3>
                 <p>Se connecter à votre espace</p>

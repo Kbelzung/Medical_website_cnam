@@ -1,4 +1,4 @@
-<?php include('verify_connection.php'); ?>
+<?php include('database_access/verify_connection.php'); ?>
 <!doctype html>
 <html>
     <head>
@@ -6,14 +6,14 @@
         <link rel="stylesheet" href="css/appointment.css">
     </head>
     <body>
-        <?php include('header.php'); ?>
-        <form class="login" action="appointment_processing.php" method="post">  
+        <?php include('header_connected.php'); ?>
+        <form class="login" action="database_access/appointment_processing.php" method="post">
             <div id=container> 
                 <div id=container_calendar>
                     <div id="doctors_list">
                         <table class="table">
                             <tbody>
-                                <?php include('get_list_doctor.php'); ?>
+                                <?php include('database_access/get_list_doctor.php'); ?>
                             </tbody>
                         </table>
                     </div>
