@@ -61,10 +61,10 @@
                 <p>S'enregistrer sur le site</p>
             </div>
             <div class="form">
-                <input type="email" name="email" class="input" placeholder="Email" required="required" autocomplete="off">
+                <input type="email" name="email" class="input" placeholder="Email" required="required">
             </div>
             <div class="form">
-            <input type="password" name="password" class="input" placeholder="Mot de passe" required="required" autocomplete="off">
+            <input type="password" name="password" class="input" placeholder="Mot de passe" required="required">
             </div>
             <div class="form">
             <input type="password" name="password_retype" class="input" placeholder="Re-tapez le mot de passe" required="required" autocomplete="off">
