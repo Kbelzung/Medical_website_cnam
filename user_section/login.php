@@ -7,37 +7,7 @@
     <?php include('header_not_connected.php'); ?>
     <div class="wrap">
     <?php 
-        if(isset($_GET['login_err']))
-        {
-            $err = htmlspecialchars($_GET['login_err']);
-            echo $err;
-            switch($err)
-            {
-                case 'password':
-                ?>
-                    <div class="alert">
-                        <strong>Erreur</strong> mot de passe incorrect
-                    </div>
-                <?php
-                break;
-
-                case 'email':
-                ?>
-                    <div class="alert">
-                        <strong>Erreur</strong> email incorrect
-                    </div>
-                <?php
-                break;
-
-                case 'already':
-                ?>
-                    <div class="alert">
-                        <strong>Erreur</strong> compte non existant
-                    </div>
-                <?php
-                break;
-            }
-        }
+        include('error_messages.php');
         ?> 
         <form class="login" action="database_access/login_processing.php" method="post">
             <div class="header">

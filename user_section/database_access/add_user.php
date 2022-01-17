@@ -25,19 +25,37 @@
                 if(filter_var($email, FILTER_VALIDATE_EMAIL)){ // validate mail format
                     if($password === $password_retype){
 
+                        $user_key = rand(1000000, 9000000);
+                        $mail_validated = 0;
                         // hash with Bcrypt with a cost of 12
                         $cost = ['cost' => 12];
                         $password = password_hash($password, PASSWORD_BCRYPT, $cost);
 
-                        $insert = $bdd->prepare('INSERT INTO user(email, password, first_name, last_name, phone) VALUES(:email, :password, :first_name, :last_name, :phone)');
+                        $insert = $bdd->prepare('INSERT INTO user(email, password, user_key, mail_validated, first_name, last_name, phone) VALUES(:email, :password, :user_key, :mail_validated, :first_name, :last_name, :phone)');
                         
                         $insert->execute(array(
                             'email' => $email,
                             'password' => $password,
+                            'user_key' => $user_key,
+                            'mail_validated' => $mail_validated,
                             'first_name' => $firstname,
                             'last_name' => $lastname,
                             'phone' => $phone
                         ));
+                        
+                        $check = $bdd->prepare('SELECT id FROM user WHERE email = ?');
+                        $check->execute(array($email));
+                        $data = $check->fetch();
+
+                        include('../../PHPMailer/mailConfig.php');
+
+                        $to   = $email;
+                        $from = 'cabinet.cnam@gmail.com';
+                        $name = 'Cnam';
+                        $subj = 'Email de confirmation de compte';
+                        $msg = '<a href ="http://medicalwebsitecnam/user_section/database_access/verify_mail.php?id=' . $data["id"] . '&user_key=' . $user_key . '">Lien d\'activation de votre e-mail</a>';
+
+                        $error=smtpmailer($to,$from, $name ,$subj, $msg);
                         
                         // redirect with a success message
                         header('Location: ../login.php');
