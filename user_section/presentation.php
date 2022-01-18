@@ -17,7 +17,20 @@
             }
         ?>
         <div id=container>
-            <div>
+            <article>
+                <header>
+                    <h1>Cabinet Médical du Cnam</h1>
+                </header>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ullamcorper, diam a cursus egestas, justo augue suscipit elit, sed molestie turpis nulla in risus. Fusce hendrerit, sapien dapibus commodo porttitor, mi magna vestibulum turpis, et blandit eros libero quis neque. Duis id lectus vitae justo ullamcorper consectetur quis vel metus. Suspendisse vel lorem aliquet, luctus nibh eget, commodo erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non tortor eget sem convallis semper vitae at eros. Pellentesque vel accumsan sapien. Praesent at dapibus diam. Aenean nibh risus, dictum sit amet ipsum aliquam, condimentum ullamcorper tortor. Ut at quam in diam cursus tempus in vitae nisl. Cras elementum massa sed erat dictum hendrerit. Sed dui nisi, accumsan quis dolor eget, vestibulum porta ligula. Duis placerat metus quis augue blandit, in vulputate eros semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+                    Etiam viverra vel odio eget maximus. Vestibulum ullamcorper, felis id finibus vehicula, dui quam mollis enim, nec condimentum velit purus sed justo. Aenean vitae augue a erat convallis tempor. Quisque in elit rutrum, pulvinar turpis luctus, viverra nulla. Quisque convallis nisl libero. Fusce at elit eu augue auctor aliquet. Sed vitae mi sapien. Suspendisse tristique lacus mauris, vel convallis felis consequat ut. Sed imperdiet a massa in fringilla.
+                </p>
+                
+                <br>
+                <br>
+
                 <div class="container_img_clinic">
                     <img class="mySlides" src="\user_section\resources\photos\office.jpg">
                     <img class="mySlides" src="\user_section\resources\photos\office_2.jpg">
@@ -25,12 +38,9 @@
                     <button class="button-previous" onclick="plusDivs(-1)">&#10094;</button>
                     <button class="button-next" onclick="plusDivs(+1)">&#10095;</button>
                 </div>
-            </div>
 
-           <article>
-                <header>
-                    <h1>Présentation du cabinet Cnam</h1>
-                </header>
+                <br>
+                <br>
 
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ullamcorper, diam a cursus egestas, justo augue suscipit elit, sed molestie turpis nulla in risus. Fusce hendrerit, sapien dapibus commodo porttitor, mi magna vestibulum turpis, et blandit eros libero quis neque. Duis id lectus vitae justo ullamcorper consectetur quis vel metus. Suspendisse vel lorem aliquet, luctus nibh eget, commodo erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non tortor eget sem convallis semper vitae at eros. Pellentesque vel accumsan sapien. Praesent at dapibus diam. Aenean nibh risus, dictum sit amet ipsum aliquam, condimentum ullamcorper tortor. Ut at quam in diam cursus tempus in vitae nisl. Cras elementum massa sed erat dictum hendrerit. Sed dui nisi, accumsan quis dolor eget, vestibulum porta ligula. Duis placerat metus quis augue blandit, in vulputate eros semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit.

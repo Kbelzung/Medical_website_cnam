@@ -32,3 +32,64 @@ input[type=submit]:hover {
 .header {
   text-align: center;
 }
+
+html {
+  font-family: sans-serif;
+}
+
+.container_file_upload {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.container_file_upload ol {
+  padding-left: 0;
+}
+
+.container_file_upload li, div > p {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  list-style-type: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.container_file_upload img {
+  height: 64px;
+  order: 1;
+}
+
+.container_file_upload p {
+  line-height: 32px;
+  padding-left: 10px;
+}
+
+.container_file_upload label, form button {
+  background-color: #7F9CCB;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px ridge black;
+  font-size: 0.8rem;
+  height: auto;
+}
+
+.container_file_upload label:hover, form button:hover {
+  background-color: #2D5BA3;
+  color: white;
+}
+
+.container_file_upload label:active, form button:active {
+  background-color: #0D3F8F;
+  color: white;
+}
+
+.image_button {
+  flex-grow: 1;
+}
+
+.preview {
+  flex-grow: 4;
+}

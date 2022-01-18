@@ -34,9 +34,18 @@
                     <label for="presentation">Présentation</label>
                     <textarea id="presentation" name="presentation" style="height:200px" required="required"></textarea>
 
+                    <label>Photo de profil</label>
+                    <div class="container_file_upload">
+                        <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" multiple>
+                        <div class="preview">
+                            <p>Aucun fichier sélectionné pour le moment</p>
+                        </div>
+                    </div>
+
                     <input type="submit" value="Valider">
                 </form>
             </div>
         </div>
     </body>
+    <script src="js/add_doctors.js"></script>
 </html>

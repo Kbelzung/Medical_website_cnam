@@ -17,9 +17,10 @@ body{
 }
 
 #container {
-  margin: auto;
-  max-width: 1320px;
-  width: 1320px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
 }
 
 .container_img_clinic {
