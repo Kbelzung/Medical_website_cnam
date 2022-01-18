@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="css/appointment.css">
     </head>
     <body>
-        <?php include('header_connected.php'); ?>
+        <?php include('menu_connected.php'); ?>
         <form class="login" action="database_access/appointment_processing.php" method="post">
             <div id=container> 
                 <div id=container_calendar>

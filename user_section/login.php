@@ -4,7 +4,7 @@
   <title>Connexion</title>
 </head>
 <body>
-    <?php include('header_not_connected.php'); ?>
+    <?php include('menu_not_connected.php'); ?>
     <div class="wrap">
     <?php 
         include('error_messages.php');

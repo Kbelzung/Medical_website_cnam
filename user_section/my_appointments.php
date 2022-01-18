@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="css/my_appointments.css">
     </head>
     <body>
-        <?php include('header_connected.php'); ?>
+        <?php include('menu_connected.php'); ?>
 
         <section class="main-content">
             <div class="container">

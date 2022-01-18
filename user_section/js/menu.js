@@ -1,10 +1,13 @@
 currentPageColor = '#2760A8';
 
-if(window.location.pathname.endsWith("my_appointments.php")) {  
-    document.getElementById('header_element_my_appointment').style.backgroundColor = currentPageColor;
-}
-else if(window.location.pathname.endsWith("presentation.php")) {  
+if(window.location.pathname.endsWith("presentation.php")) {  
     document.getElementById('header_element_presentation').style.backgroundColor = currentPageColor;
+}
+else if(window.location.pathname.endsWith("doctors.php")) {  
+    document.getElementById('header_element_doctors').style.backgroundColor = currentPageColor;
+}
+else if(window.location.pathname.endsWith("my_appointments.php")) {  
+    document.getElementById('header_element_my_appointment').style.backgroundColor = currentPageColor;
 }
 else if(window.location.pathname.endsWith("appointment.php")) {  
     document.getElementById('header_element_appointment').style.backgroundColor = currentPageColor;
