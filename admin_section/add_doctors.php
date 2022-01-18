@@ -10,7 +10,7 @@
         <?php include('menu.php'); ?>
         <div id=container>
             <div class="container_form">
-                <form action="database_access/add_doctor_processing.php">
+                <form action="database_access/add_doctor_processing.php" method="post" enctype="multipart/form-data">
 
                     <div class="header">
                         <h3>Enregistrer un nouveau docteur</h3>
@@ -36,7 +36,7 @@
 
                     <label>Photo de profil</label>
                     <div class="container_file_upload">
-                        <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" multiple>
+                        <input type="file" id="image_uploads" name="fileToUpload" accept=".jpg, .jpeg, .png" multiple>
                         <div class="preview">
                             <p>Aucun fichier sélectionné pour le moment</p>
                         </div>

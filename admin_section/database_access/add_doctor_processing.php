@@ -1,15 +1,15 @@
 <?php 
     require_once 'config.php';
 
-    if(!empty($_GET['firstname']) && !empty($_GET['lastname']) && !empty($_GET['doctor_type']) && !empty($_GET['email']) && !empty($_GET['phone']) && !empty($_GET['presentation']))
+    if(!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['doctor_type']) && !empty($_POST['email']) && !empty($_POST['phone']) && !empty($_POST['presentation']))
     {
         // Patch XSS
-        $firstname = htmlspecialchars($_GET['firstname']);
-        $lastname = htmlspecialchars($_GET['lastname']);
-        $doctor_type = htmlspecialchars($_GET['doctor_type']);
-        $email = htmlspecialchars($_GET['email']);
-        $phone = htmlspecialchars($_GET['phone']);
-        $presentation = htmlspecialchars($_GET['presentation']);
+        $firstname = htmlspecialchars($_POST['firstname']);
+        $lastname = htmlspecialchars($_POST['lastname']);
+        $doctor_type = htmlspecialchars($_POST['doctor_type']);
+        $email = htmlspecialchars($_POST['email']);
+        $phone = htmlspecialchars($_POST['phone']);
+        $presentation = htmlspecialchars($_POST['presentation']);
         
         if(strlen($email) <= 100){ // check email size
             if(filter_var($email, FILTER_VALIDATE_EMAIL)){ // validate mail format
@@ -22,10 +22,43 @@
                         'phone' => $phone,
                         'presentation' => $presentation,
                     ));
+
+                    $check = $bdd->prepare('SELECT id FROM doctor WHERE email = ?');
+                    $check->execute(array($email));
+                    $data = $check->fetch();
+
+                    if($_FILES["fileToUpload"]["error"] === 0) {
+                        $file = $_FILES['fileToUpload'];
+                        $fileName = $_FILES['fileToUpload']['name'];
+                        $fileTmpName = $_FILES['fileToUpload']['tmp_name'];
+                        $fileSize = $_FILES['fileToUpload']['size'];
+                        $fileError = $_FILES['fileToUpload']['error'];
+                        $fileType = $_FILES['fileToUpload']['type'];
+                
+                        $fileExt = explode('.', $fileName);
+                        $fileActualExt = strtolower(end($fileExt));
+                
+                        $allowed = array('jpg','jpeg', 'png');
+                
+                        if (in_array($fileActualExt, $allowed)) {
+                            if ($fileError === 0) {
+                                if ($fileSize < 5000000) {  // if above 5mb
+                                    $fileNameNew = $data['id'] . "." . $fileActualExt;
+                                    $fileDestination = '..\\photos_doctors\\' . $fileNameNew;
+                                    move_uploaded_file($fileTmpName, $fileDestination);
+                                } else { echo "Le fichier est trop grand."; }
+                            } else { echo "Erreur de l'image uploadée."; }
+                        } else { echo "Mauvais type de fichier."; }
+                    } else { echo "Pas de fichier."; }
                     
-                    // redirect with a success message
+                    //redirect with a success message
                     header('Location: ../modify_doctors.php');
                     die();
             }else{ header('Location: ../add_doctors.php?reg_err=email'); die();}
         }else{ header('Location: ../add_doctors.php?reg_err=email_length'); die();}
+
+
+
+
+
     }
