@@ -31,9 +31,6 @@
                     <label for="phone">Téléphone</label>
                     <input type="tel" id="phone" name="phone" required="required">
 
-                    <label for="presentation">Présentation</label>
-                    <textarea id="presentation" name="presentation" style="height:200px" required="required"></textarea>
-
                     <label>Photo de profil</label>
                     <div class="container_file_upload">
                         <input type="file" id="image_uploads" name="fileToUpload" accept=".jpg, .jpeg, .png" multiple>

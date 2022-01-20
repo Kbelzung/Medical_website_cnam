@@ -9,11 +9,11 @@
     
     foreach ($doctors as $key => $doctor){
     
-        if($doctor["photo_path"] == ""){
-            $photo_doctor = "\\admin_section\\photos_doctors\\default.png";
+        if($doctor["photo_name"] == ""){
+            $photo_doctor_name = "default.png";
         }
         else {
-            $photo_doctor = $doctor["photo_path"];
+            $photo_doctor_name = $doctor["photo_name"];
         }
 
         if ($key % 3 == 0) {
@@ -22,7 +22,7 @@
 
         echo' 
             <div class="element">
-                <img src="' . $photo_doctor . '"></img>
+                <img src="\\admin_section\\photos_doctors\\' . $photo_doctor_name . '"></img>
                 <div class="infos">
                     <h3>' . $doctor["first_name"] . ' ' . $doctor["last_name"] . '</h3>
                     <p>' . $doctor["title"] . '</p>
