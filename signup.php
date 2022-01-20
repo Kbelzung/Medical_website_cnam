@@ -8,8 +8,6 @@
 <body>
     <?php include('menu_not_connected.php'); ?>
     <div id="container">
-        <?php include('database_access/error_messages.php'); ?>
-
         <div class="container_form">
             <form action="database_access/add_user.php" method="post">
                 <div class="header">
@@ -37,6 +35,7 @@
 
                 <input type="submit" value="Valider">
             </form>
+            <?php include('database_access/error_messages.php'); ?>
         </div>
     </div>
 </body>

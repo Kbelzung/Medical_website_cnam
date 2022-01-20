@@ -1,7 +1,7 @@
 <?php 
-    if(isset($_GET['login_err'])) {
+    if(isset($_GET['_err'])) {
 
-        $err = htmlspecialchars($_GET['login_err']);
+        $err = htmlspecialchars($_GET['_err']);
 
         switch($err)
         { 
