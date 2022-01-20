@@ -19,19 +19,16 @@
         
         if($row > 0)
         {
-            if(filter_var($email, FILTER_VALIDATE_EMAIL))
+            if(password_verify($password, $data['password']))
             {
-                if(password_verify($password, $data['password']))
+                if($data['mail_validated'] == 1)
                 {
-                    if($data['mail_validated'] == 1)
-                    {
-                        $_SESSION['loggedin'] = TRUE;
-                        $_SESSION['email'] = $data['email'] ;
-                        $_SESSION['id'] = $data['id'];
-                        header('Location: ../my_appointments.php');
-                        die();
-                    }else { header('Location: ../login.php?login_err=mail_not_validated'); die();}
-                }else { header('Location: ../login.php?login_err=password'); die(); }
-            }else { header('Location: ../login.php?login_err=email'); die(); }
-        }else { header('Location: ../login.php?login_err=already'); die(); }
-    }else { header('Location: ../login.php?login_err=already'); die();}
+                    $_SESSION['loggedin'] = TRUE;
+                    $_SESSION['email'] = $data['email'] ;
+                    $_SESSION['id'] = $data['id'];
+                    header('Location: ../');
+                    die();
+                }else { header('Location: ../login?login_err=mail_not_validated'); die();}
+            }else { header('Location: ../login?login_err=password'); die(); }
+        }else { header('Location: ../login?login_err=user_not_exist'); die(); }
+    }else { header('Location: ../login?login_err=empty'); die();}

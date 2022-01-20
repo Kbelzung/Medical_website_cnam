@@ -8,7 +8,7 @@
     </head>
     <body>
         <?php include('menu_connected.php'); ?>
-        <form class="login" action="database_access/appointment_processing.php" method="post">
+        <form class="login" action="database_access/appointment_processing" method="post">
             <div id=container> 
                 <div id=container_calendar>
                     <div id="doctors_list">

@@ -29,6 +29,6 @@
             $stmt= $bdd->prepare($request);
             $stmt->execute([$idDoctor, $_SESSION['id'], $date, $hour,$checkbox_first_appointment, $select_reason, $textarea_note]);
             
-            header('Location: ../my_appointments.php'); die();
-        }else{ header('Location: ../appointment.php'); die();}
-    }else{ header('Location: ../appointment.php'); die();}
+            header('Location: ../my_appointments'); die();
+        }else{ header('Location: ../appointment'); die();}
+    }else{ header('Location: ../appointment'); die();}

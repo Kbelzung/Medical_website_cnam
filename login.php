@@ -10,7 +10,7 @@
     <?php 
         include('database_access/error_messages.php');
         ?> 
-        <form class="login" action="database_access/login_processing.php" method="post">
+        <form class="login" action="database_access/login_processing" method="post">
             <div class="header">
                 <h3>Connexion</h3>
                 <p>Se connecter à votre espace</p>
@@ -25,7 +25,7 @@
                 <button class="button" type="submit">Login</button>
             </div>
             <div class="footer">
-                Pas encore de compte ? <a href="signup.php">S'enregistrer</a>
+                Pas encore de compte ? <a href="signup">S'enregistrer</a>
             </div>
         </form>
     </div>

@@ -58,10 +58,10 @@
                         $error=smtpmailer($to,$from, $name ,$subj, $msg);
                         
                         // redirect with a success message
-                        header('Location: ../login.php');
+                        header('Location: ../login');
                         die();
-                    }else{ header('Location: ../signup.php?reg_err=password'); die();}
-                }else{ header('Location: ../signup.php?reg_err=email'); die();}
-            }else{ header('Location: ../signup.php?reg_err=email_length'); die();}
-        }else{ header('Location: ../signup.php?reg_err=already'); die();}
-    }else{ header('Location: ../signup.php?reg_err=empty_inputs'); die();}
+                    }else{ header('Location: ../signup?reg_err=password'); die();}
+                }else{ header('Location: ../signup?reg_err=email'); die();}
+            }else{ header('Location: ../signup?reg_err=email_length'); die();}
+        }else{ header('Location: ../signup?reg_err=already'); die();}
+    }else{ header('Location: ../signup?reg_err=empty_inputs'); die();}

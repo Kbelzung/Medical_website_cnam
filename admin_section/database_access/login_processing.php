@@ -27,9 +27,9 @@
                     $_SESSION['isAdmin'] = TRUE;
                     $_SESSION['email'] = $data['email'] ;
                     $_SESSION['id'] = $data['id'];
-                    header('Location: ../modify_doctors.php');
+                    header('Location: ../modify_doctors');
                     die();
-                }else{ header('Location: ../index.php?login_err=password'); die(); }
-            }else{ header('Location: ../index.php?login_err=email'); die(); }
-        }else{ header('Location: ../index.php?login_err=already'); die(); }
-    }else{ header('Location: ../index.php?login_err=already'); die();}
+                }else{ header('Location: ../?login_err=password'); die(); }
+            }else{ header('Location: ../?login_err=email'); die(); }
+        }else{ header('Location: ../?login_err=already'); die(); }
+    }else{ header('Location: ../?login_err=already'); die();}

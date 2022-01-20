@@ -23,8 +23,8 @@
                     <h6>' . $doctor["phone"] . '</h6>
                 </td>
                 <td>
-                    <a href="modify_doctor.php?id=' . $doctor["id"] . '"><button>Modifier</button></a>
-                    <a href="database_access/delete_doctor.php?id=' . $doctor["id"] . '"><button>Supprimer</button></a>
+                    <a href="modify_doctor?id=' . $doctor["id"] . '"><button>Modifier</button></a>
+                    <a href="database_access/delete_doctor?id=' . $doctor["id"] . '"><button>Supprimer</button></a>
                 </td>
             </tr>
         ';

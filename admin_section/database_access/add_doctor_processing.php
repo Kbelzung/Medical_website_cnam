@@ -58,10 +58,10 @@
                     } else { echo "Pas de fichier."; }
                     
                     //redirect with a success message
-                    header('Location: ../modify_doctors.php');
+                    header('Location: ../modify_doctors');
                     die();
-            }else{ header('Location: ../add_doctors.php?reg_err=email'); die();}
-        }else{ header('Location: ../add_doctors.php?reg_err=email_length'); die();}
+            }else{ header('Location: ../add_doctors?reg_err=email'); die();}
+        }else{ header('Location: ../add_doctors?reg_err=email_length'); die();}
 
 
 
