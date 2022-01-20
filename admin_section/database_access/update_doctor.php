@@ -36,5 +36,4 @@
                         }else{ header('Location: ../modify_doctor.php?id=' . $id . '&reg_err=email'); die();}
                     }else{ header('Location: ../modify_doctor.php?id=' . $id . '&reg_err=email_length'); die();}
                 }
-        
     }

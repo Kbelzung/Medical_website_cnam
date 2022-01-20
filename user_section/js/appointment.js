@@ -132,11 +132,13 @@ function previousYear() {
 }
 
 function selection() {
+
+    console.log(this.constructor.name);
     if(this.classList.contains('calendar_bloc_number')){
-        if(doctorSelected != null){
+        if(doctorSelected != null) {
             if(this!=daySelected) {
-                unselectHour();
                 unselectDay();
+                unselectHour();
                 daySelected = this;
                 fillHoursCalendar();
                 update_form();
@@ -145,6 +147,8 @@ function selection() {
     }
     else if(this.classList.contains('doctor_card')){
         unselectDoctor();
+        unselectDay();
+        unselectHour();
         doctorSelected = this;
     }
     else {
@@ -152,6 +156,7 @@ function selection() {
         hourSelected = this;
         update_form();
     }
+
     if(doctorSelected != null){
         this.style.backgroundColor = "rgb(39, 96, 168)";
         this.style.color = "white";

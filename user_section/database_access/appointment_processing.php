@@ -18,20 +18,16 @@
     
     if(!empty($idDoctor) && !empty($date) && !empty($hour) && !empty($idDoctor) && !empty($select_reason)) {
 
+        // check if the appointment already exist
         $sqlQuery = "SELECT id FROM appointment WHERE doctor_id = $idDoctor AND date = $date AND time = $hour";
         $stm = $bdd->prepare($sqlQuery);
         $stm->execute();
         $row = $stm->rowCount();
-        echo "rowCount = " . $row;
 
         if($row == 0) {
             $request = "INSERT INTO appointment (doctor_id,user_id,date,time,first_appointment,reason,note) VALUES (?,?,?,?,?,?,?)";
             $stmt= $bdd->prepare($request);
             $stmt->execute([$idDoctor, $_SESSION['id'], $date, $hour,$checkbox_first_appointment, $select_reason, $textarea_note]);
-
-            echo "\nPDO::errorInfo():\n";
-            print_r($stmt->errorInfo());
-            $stmt->debugDumpParams();
             
             header('Location: ../my_appointments.php'); die();
         }else{ header('Location: ../appointment.php'); die();}

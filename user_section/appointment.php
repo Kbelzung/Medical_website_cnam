@@ -11,11 +11,7 @@
             <div id=container> 
                 <div id=container_calendar>
                     <div id="doctors_list">
-                        <table class="table">
-                            <tbody>
-                                <?php include('database_access/get_list_doctor.php'); ?>
-                            </tbody>
-                        </table>
+                        <?php include('database_access/get_list_doctor.php'); ?>
                     </div>
                     <div class="calendar">
                         <header id="calendar_header">
