@@ -1,13 +1,14 @@
 <html>
 <head>
   <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/menu.css">
   <title>Connexion</title>
 </head>
 <body>
     <?php include('menu_not_connected.php'); ?>
     <div class="wrap">
     <?php 
-        include('error_messages.php');
+        include('database_access/error_messages.php');
         ?> 
         <form class="login" action="database_access/login_processing.php" method="post">
             <div class="header">

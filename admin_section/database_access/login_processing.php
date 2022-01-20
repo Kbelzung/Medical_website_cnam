@@ -29,7 +29,7 @@
                     $_SESSION['id'] = $data['id'];
                     header('Location: ../modify_doctors.php');
                     die();
-                }else{ header('Location: ../login.php?login_err=password'); die(); }
-            }else{ header('Location: ../login.php?login_err=email'); die(); }
-        }else{ header('Location: ../login.php?login_err=already'); die(); }
-    }else{ header('Location: ../login.php?login_err=already'); die();}
+                }else{ header('Location: ../index.php?login_err=password'); die(); }
+            }else{ header('Location: ../index.php?login_err=email'); die(); }
+        }else{ header('Location: ../index.php?login_err=already'); die(); }
+    }else{ header('Location: ../index.php?login_err=already'); die();}

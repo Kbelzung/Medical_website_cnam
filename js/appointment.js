@@ -132,9 +132,14 @@ function previousYear() {
 }
 
 function selection() {
-
-    console.log(this.constructor.name);
-    if(this.classList.contains('calendar_bloc_number')){
+    if(this.classList.contains('doctor_card')){
+        unselectDoctor();
+        unselectDay();
+        unselectHour();
+        clearHours();
+        doctorSelected = this;
+    }
+    else if(this.classList.contains('calendar_bloc_number')){
         if(doctorSelected != null) {
             if(this!=daySelected) {
                 unselectDay();
@@ -144,12 +149,6 @@ function selection() {
                 update_form();
             }
         }
-    }
-    else if(this.classList.contains('doctor_card')){
-        unselectDoctor();
-        unselectDay();
-        unselectHour();
-        doctorSelected = this;
     }
     else {
         unselectHour();
@@ -220,7 +219,7 @@ function getxhr() {
 function fillHoursCalendar() {
     let idDoctor = doctorSelected.getAttribute("value");
     let xhr = getxhr();
-    let url = "http://medicalwebsitecnam/user_section/database_access/request_appointments_doctor.php?idDoctor="+idDoctor+"&year="+yearSelected+"&month="+(monthSelected+1)+"&day="+daySelected.innerHTML;
+    let url = "http://medicalwebsitecnam/database_access/request_appointments_doctor.php?idDoctor="+idDoctor+"&year="+yearSelected+"&month="+(monthSelected+1)+"&day="+daySelected.innerHTML;
     xhr.open("GET",url,true);
     
     xhr.onreadystatechange = function () {

@@ -41,9 +41,6 @@
 
                                     <label for="phone">Téléphone</label>
                                     <input type="tel" id="phone" name="phone" required="required" value="' . $doctor["phone"] . '">
-
-                                    <label for="presentation">Présentation</label>
-                                    <textarea id="presentation" name="presentation" style="height:200px" required="required">' . $doctor["presentation"] . '</textarea>
                                 ';
                             
                         }

@@ -3,6 +3,7 @@
     <head>
         <title>Présentation</title>
         <link rel="stylesheet" href="css/presentation.css">
+        <link rel="stylesheet" href="css/menu.css">
     </head>
     <body>
         <?php 

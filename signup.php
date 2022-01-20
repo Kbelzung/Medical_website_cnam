@@ -2,12 +2,13 @@
 <head>
 <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/signup.css">
+  <link rel="stylesheet" href="css/menu.css">
   <title>Sign in</title>
 </head>
 <body>
     <?php include('menu_not_connected.php'); ?>
     <div id="container">
-        <?php include('error_messages.php'); ?>
+        <?php include('database_access/error_messages.php'); ?>
 
         <div class="container_form">
             <form action="database_access/add_user.php" method="post">

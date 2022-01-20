@@ -4,6 +4,7 @@
     <head>
         <title>Prendre rendez-vous</title>
         <link rel="stylesheet" href="css/appointment.css">
+        <link rel="stylesheet" href="css/menu.css">
     </head>
     <body>
         <?php include('menu_connected.php'); ?>

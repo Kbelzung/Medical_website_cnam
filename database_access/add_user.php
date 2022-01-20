@@ -47,13 +47,13 @@
                         $check->execute(array($email));
                         $data = $check->fetch();
 
-                        include('../../PHPMailer/mailConfig.php');
+                        include('../PHPMailer/mailConfig.php');
 
                         $to   = $email;
                         $from = 'cabinet.cnam@gmail.com';
                         $name = 'Cnam';
                         $subj = 'Email de confirmation de compte';
-                        $msg = '<a href ="http://medicalwebsitecnam/user_section/database_access/verify_mail.php?id=' . $data["id"] . '&user_key=' . $user_key . '">Lien d\'activation de votre e-mail</a>';
+                        $msg = '<a href ="http://medicalwebsitecnam/database_access/verify_mail.php?id=' . $data["id"] . '&user_key=' . $user_key . '">Lien d\'activation de votre e-mail</a>';
 
                         $error=smtpmailer($to,$from, $name ,$subj, $msg);
                         
