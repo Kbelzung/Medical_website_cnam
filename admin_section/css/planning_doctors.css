@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    font-size: 1rem;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#container {
+    overflow: auto;
+    margin: auto;
+    max-width: 1320px;
+    width: 1320px;
+}
+
+#validation {
+    height: 70px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: #2760A8;
+    color: white;
+    margin-top: 20px;
+    border: none;
+}
+
+.container_center {
+    display: flex;
+    justify-content: center;
+}
+
+.container_center_column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ----------------------------------------------- Calendar ----------------------------------------------- */
+#container_calendar {
+    display: flex;
+    flex-direction: row;
+    height: 500px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#doctors_list {
+    height: 100%;
+    width: 14%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.calendar {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    flex-grow: 1;
+    width: 43%;
+}
+
+.dates_container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    flex-grow: 1;
+    width: 43%;
+}
+
+#calendar_header {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    box-shadow: 0px 0px 10px 0px #62728C;
+    color: #4F536C;
+    align-items: center;
+    margin-bottom: 0.1%;
+}
+
+.calendar_row {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: center;
+    background-color: #F3F9FF;
+}
+
+#calendar_row_days div {
+    color: gray;
+}
+
+#calendar_days_row div:hover {
+    background-color: white;
+    color: gray;
+}
+
+#calendar_months, #calendar_years {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    min-height: 100%;
+}
+
+.calendar_bloc_weekdays {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    color: gray;
+}
+
+.calendar_bloc_number {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    color: gray;
+    background-color: #F3F9FF;
+}
+
+.active {
+    color: black;
+}
+
+.active:hover {
+    background-color: #2760A8;
+    color: white;
+}
+
+.desactivated {
+    color: white;
+    background-color: white;
+}
+
+.calendar_arrow {
+    align-content: center;
+    width: 15%;
+}
+
+.calendar_arrow:active {
+    box-shadow: 0px 0px 10px 0px #62728C;
+}
+
+.calendar_header_text {
+    font-size: 4em;
+    display: flex;
+    align-items: center;
+    flex-grow: 2;
+    justify-content: center;
+    text-size-adjust: 100em;
+}
+
+.dates_row {
+    display: flex;
+    flex-grow: 1;
+    margin-bottom: 10px;
+}
+
+.dates_bloc {
+    display: flex;
+    height: 100%;
+    flex-grow: 1;
+    margin: 10px;
+    flex-basis: 100%;
+}
+
+.date_bloc_arrow {
+    display: flex;
+    height: 100%;
+    flex-grow: 1;
+    margin: 10px;
+    flex-basis: 100%;
+}
+
+.dates_bloc_active {
+    border-radius: 8px;
+    background-color: #F3F9FF;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.date_bloc_empty {
+    display: flex;
+    height: 100%;
+    flex-grow: 1;
+    margin: 10px;
+    flex-basis: 100%;
+}
+
+.dates_bloc_active:hover {
+    background-color: #2760A8;
+    color: white;
+}
+
+/* ----------------------------------------------- End calendar ----------------------------------------------- */
+
+/* ----------------------------------------------- Begin doctor cards ----------------------------------------- */
+.doctor_card {
+    height: 70px;
+    width: 100%;
+    background-color: #F3F9FF;
+    margin-top: 10px;
+    display: inline-flex;
+}
+
+.doctor_card img {
+    height: inherit;
+    width: auto;
+}
+
+.doctor_info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding-right: 20px;
+    padding-top: 10px;
+}
+
+.h6, h6 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+}
+
+/* ----------------------------------------------- end doctor cards ------------------------------------------- */

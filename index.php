@@ -33,9 +33,9 @@
                 <br>
 
                 <div class="container_img_clinic">
-                    <img class="mySlides" src="\user_section\resources\photos\office.jpg">
-                    <img class="mySlides" src="\user_section\resources\photos\office_2.jpg">
-                    <img class="mySlides" src="\user_section\resources\photos\office_3.jpg">
+                    <img class="mySlides" src="\resources\photos\office.jpg">
+                    <img class="mySlides" src="\resources\photos\office_2.jpg">
+                    <img class="mySlides" src="\resources\photos\office_3.jpg">
                     <button class="button-previous" onclick="plusDivs(-1)">&#10094;</button>
                     <button class="button-next" onclick="plusDivs(+1)">&#10095;</button>
                 </div>
