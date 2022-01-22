@@ -154,10 +154,10 @@
                     <label for="select_reason">Motif de rendez-vous:</label>
                     <select name="select_reason" id="select_reason" required="required">
                         <option value="">--Choisir un motif--</option>
-                        <option value="value1">Consultation de médecine générale</option>
-                        <option value="value2">Renouvellement de traitement</option>
-                        <option value="value3">Vaccination anti-covid</option>
-                        <option value="value4">Bilan de santé</option>
+                        <option value="Consultation de médecine générale">Consultation de médecine générale</option>
+                        <option value="Renouvellement de traitement">Renouvellement de traitement</option>
+                        <option value="Vaccination anti-covid">Vaccination anti-covid</option>
+                        <option value="Bilan de santé">Bilan de santé</option>
                     </select>
 
                     <label for="textarea_note">Observation:</label>
