@@ -28,7 +28,7 @@
                     $_SESSION['id'] = $data['id'];
                     header('Location: ../');
                     die();
-                }else { header('Location: ../login?login_err=mail_not_validated'); die();}
-            }else { header('Location: ../login?login_err=password'); die(); }
-        }else { header('Location: ../login?login_err=user_not_exist'); die(); }
-    }else { header('Location: ../login?login_err=empty'); die();}
+                }else { header('Location: ../login?_err=mail_not_validated'); die();}
+            }else { header('Location: ../login?_err=wrong_password'); die(); }
+        }else { header('Location: ../login?_err=user_not_exist'); die(); }
+    }else { header('Location: ../login?_err=empty_inputs'); die();}

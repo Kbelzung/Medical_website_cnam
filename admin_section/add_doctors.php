@@ -40,6 +40,7 @@
                     </div>
 
                     <input type="submit" value="Valider">
+                    <?php include('database_access/error_messages.php');?> 
                 </form>
             </div>
         </div>

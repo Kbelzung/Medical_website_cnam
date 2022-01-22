@@ -21,14 +21,6 @@
             <?php
             break;
 
-            case 'user_not_exist':
-                ?>
-                    <div class="alert">
-                        Cet utilisateur n'existe pas
-                    </div>
-                <?php
-            break;
-
             case 'empty_inputs':
             ?>
                 <div class="alert">
@@ -67,6 +59,28 @@
                     Email déjà utilisé
                 </div>
             <?php 
+
+            case 'file_err':
+            ?>
+                <div class="alert">
+                    Erreur fichier
+                </div>
+            <?php 
+
+            case 'file_type':
+                ?>
+                    <div class="alert">
+                        Mauvais type de fichier
+                    </div>
+                <?php 
+
+            case 'file_size':
+                ?>
+                    <div class="alert">
+                    Erreur de l'image uploadée
+                    </div>
+                <?php 
+    
         }
     }
 ?>

@@ -60,8 +60,8 @@
                         // redirect with a success message
                         header('Location: ../login');
                         die();
-                    }else{ header('Location: ../signup?_err=password'); die();}
-                }else{ header('Location: ../signup?_err=email'); die();}
+                    }else{ header('Location: ../signup?_err=wrong_password'); die();}
+                }else{ header('Location: ../signup?_err=email_format'); die();}
             }else{ header('Location: ../signup?_err=email_length'); die();}
-        }else{ header('Location: ../signup?_err=already'); die();}
+        }else{ header('Location: ../signup?_err=email_already_used'); die();}
     }else{ header('Location: ../signup?_err=empty_inputs'); die();}
