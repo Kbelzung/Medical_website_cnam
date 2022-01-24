@@ -220,7 +220,7 @@ function getxhr() {
 function fillHoursCalendar() {
     let idDoctor = doctorSelected.getAttribute("value");
     let xhr = getxhr();
-    let url = "http://medicalwebsitecnam/database_access/request_appointments_doctor.php?idDoctor="+idDoctor+"&year="+yearSelected+"&month="+(monthSelected+1)+"&day="+daySelected.innerHTML;
+    let url = "/database_access/request_appointments_doctor.php?idDoctor="+idDoctor+"&year="+yearSelected+"&month="+(monthSelected+1)+"&day="+daySelected.innerHTML;
     xhr.open("GET",url,true);
 
     xhr.onreadystatechange = function () {
@@ -253,10 +253,9 @@ function fillHoursCalendar() {
 function update_infos_patient() {
     let idDoctor = doctorSelected.getAttribute("value");
     let xhr = getxhr();
-    let url = "http://medicalwebsitecnam/database_access/get_appointment_patient_infos.php?idDoctor="+idDoctor+"&year="+yearSelected+"&month="+(monthSelected+1)+"&day="+daySelected.innerHTML+"&hour="+hourSelected.innerHTML;
+    let url = "/database_access/get_appointment_patient_infos.php?idDoctor="+idDoctor+"&year="+yearSelected+"&month="+(monthSelected+1)+"&day="+daySelected.innerHTML+"&hour="+hourSelected.innerHTML;
     xhr.open("GET",url,true);
 
-    console.log(url)
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {

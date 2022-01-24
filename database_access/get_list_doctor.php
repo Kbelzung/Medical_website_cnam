@@ -10,7 +10,7 @@
     foreach ($doctors as $doctor) {
         echo '
             <div class ="doctor_card" value=' . $doctor["id"] . '>
-                <img src="\\admin_section\\photos_doctors\\' . $doctor["photo_name"] . '"></img>
+                <img src="../resources/photos/photos_doctors/' . $doctor["photo_name"] . '"></img>
                 <div class="doctor_info">
                     <td>
                         <h6 >' . $doctor["first_name"] . ' ' . $doctor["last_name"] . '</h6>

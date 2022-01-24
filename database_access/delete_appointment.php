@@ -10,4 +10,4 @@
     $stm = $bdd->prepare($sqlQuery);
     $stm->execute();
             
-    header('Location: ../my_appointments.php'); die();
+    //header('Location: ../my_appointments.php'); die();

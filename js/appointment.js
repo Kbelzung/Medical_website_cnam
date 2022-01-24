@@ -219,7 +219,7 @@ function getxhr() {
 function fillHoursCalendar() {
     let idDoctor = doctorSelected.getAttribute("value");
     let xhr = getxhr();
-    let url = "http://medicalwebsitecnam/database_access/request_appointments_doctor.php?idDoctor="+idDoctor+"&year="+yearSelected+"&month="+(monthSelected+1)+"&day="+daySelected.innerHTML;
+    let url = "/database_access/request_appointments_doctor.php?idDoctor="+idDoctor+"&year="+yearSelected+"&month="+(monthSelected+1)+"&day="+daySelected.innerHTML;
     xhr.open("GET",url,true);
     
     xhr.onreadystatechange = function () {

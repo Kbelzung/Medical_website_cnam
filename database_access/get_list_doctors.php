@@ -22,7 +22,7 @@
 
         echo' 
             <div class="element">
-                <img src="\\admin_section\\photos_doctors\\' . $photo_doctor_name . '"></img>
+                <img src="../resources/photos/photos_doctors/' . $photo_doctor_name . '"></img>
                 <div class="infos">
                     <h3>' . $doctor["first_name"] . ' ' . $doctor["last_name"] . '</h3>
                     <p>' . $doctor["title"] . '</p>

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html>
     <head>
@@ -7,7 +8,6 @@
     </head>
     <body>
     <?php 
-            session_start();
             require_once 'database_access/config.php';
            // if not connected with the session, we redirect
             if(!isset($_SESSION['loggedin'])){

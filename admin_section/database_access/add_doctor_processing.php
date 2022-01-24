@@ -40,14 +40,15 @@
                             $id_doctor = $bdd->lastInsertId();
                             
                             $fileNameNew = $id_doctor . "." . $fileActualExt;
-                            
-                            $fileDestination = 'C:\\wamp64\\www\\Medical_website_cnam\\admin_section\\photos_doctors\\' . $fileNameNew;
-                            move_uploaded_file($fileTmpName, $fileDestination);
-                            
+
+                            $fileDestination = '/homepages/18/d899016911/htdocs/Medical_website_cnam/resources/photos/photos_doctors/' . $fileNameNew;
+
+                            $resultMove = move_uploaded_file($fileTmpName, $fileDestination);
+
                             $insert = $bdd->prepare('UPDATE doctor SET photo_name = :photo_name WHERE id = :id');
                             $insert->execute(array(
                                 'photo_name' => $fileNameNew,
-                                'id' => $data['id']
+                                'id' => $id_doctor
                             ));
 
                             //redirect with a success message

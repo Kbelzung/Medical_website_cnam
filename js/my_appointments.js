@@ -23,7 +23,7 @@ function deleteAppointment() {
     let idAppointment = this.closest("tr").getAttribute("value");
 
     let xhr = getxhr();
-    let url = "http://medicalwebsitecnam/database_access/delete_appointment.php?idAppointment="+idAppointment;
+    let url = "/database_access/delete_appointment.php?idAppointment="+idAppointment;
 
     xhr.open("DELETE",url,true);
     xhr.send(null);
