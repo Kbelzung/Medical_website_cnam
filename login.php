@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <link rel="stylesheet" href="css/login.css">
   <link rel="stylesheet" href="css/menu.css">

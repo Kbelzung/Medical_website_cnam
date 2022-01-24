@@ -1,4 +1,5 @@
-<html>
+<!doctype html>
+<html lang="fr">
 <head>
 <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/signup.css">
@@ -27,11 +28,11 @@
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required="required">
 
-                <label for="psw">Mot de passe</label>
-                <input type="password" name="password" required>
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" required>
 
-                <label for="psw-repeat">Répéter votre mot de passe</label>
-                <input type="password" name="password_retype" required>
+                <label for="password_retype">Répéter votre mot de passe</label>
+                <input type="password" id="password_retype" name="password_retype" required>
 
                 <input type="submit" value="Valider">
             </form>

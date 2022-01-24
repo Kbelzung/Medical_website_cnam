@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <!doctype html>
-<html>
+<html lang="fr">
     <head>
         <title>Présentation</title>
         <link rel="stylesheet" href="css/presentation.css">
@@ -33,9 +33,9 @@
                 <br>
 
                 <div class="container_img_clinic">
-                    <img class="mySlides" src="\resources\photos\office.jpg">
-                    <img class="mySlides" src="\resources\photos\office_2.jpg">
-                    <img class="mySlides" src="\resources\photos\office_3.jpg">
+                    <img class="mySlides" src="/resources/photos/office.jpg" alt="photo entrée cabinet">
+                    <img class="mySlides" src="/resources/photos/office_2.jpg" alt="photo cabinet intérieur">
+                    <img class="mySlides" src="/resources/photos/office_3.jpg" alt="photo cabinet intérieur">
                     <button class="button-previous" onclick="plusDivs(-1)">&#10094;</button>
                     <button class="button-next" onclick="plusDivs(+1)">&#10095;</button>
                 </div>
@@ -56,8 +56,6 @@
                 </p>
             </article>
         </div>
-
-        
+        <script src="js/presentation.js"></script>
     </body>
-    <script src="js/presentation.js"></script>
 </html>

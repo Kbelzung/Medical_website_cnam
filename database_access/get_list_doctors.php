@@ -22,24 +22,20 @@
 
         echo' 
             <div class="element">
-                <img src="../resources/photos/photos_doctors/' . $photo_doctor_name . '"></img>
+                <img src="../resources/photos/photos_doctors/' . $photo_doctor_name . '" alt="photo docteur ' . $doctor["last_name"] . '">
                 <div class="infos">
                     <h3>' . $doctor["first_name"] . ' ' . $doctor["last_name"] . '</h3>
                     <p>' . $doctor["title"] . '</p>
                     <div class="contact-info">
-                        <p><img class="icons" src="resources/phone.svg"></img>' . $doctor["phone"] . '</p>
-                        <p><img class="icons" src="resources/newsletter.svg"></img>' . $doctor["email"] . '</p>
+                        <p><img class="icons" src="resources/phone.svg" alt="icone téléphone">' . $doctor["phone"] . '</p>
+                        <p><img class="icons" src="resources/newsletter.svg" alt="icone e-mail">' . $doctor["email"] . '</p>
                     </div>
                 </div>
             </div>
         ';
 
-        if ($key % 3 == 2) {
+        if ($key % 3 == 0) {
             echo '</div>';
         }
     }
-
-
-
-
 ?>
